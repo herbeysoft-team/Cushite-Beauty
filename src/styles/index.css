@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+
+:root {
+  /* ==========================
+     Colors
+  ========================== */
+  --primary: #4A136C;
+  --primary-dark: #381055;
+  --primary-light: #7A2DAA;
+
+  --secondary: #F59A23;
+  --secondary-dark: #D67F0F;
+
+  --background: #FAFAFA;
+  --surface: #FFFFFF;
+
+  --text: #262626;
+  --text-light: #6B7280;
+
+  --border: #E5E7EB;
+
+  --success: #22C55E;
+  --danger: #EF4444;
+  --warning: #FACC15;
+
+  /* ==========================
+     Fonts
+  ========================== */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Poppins", sans-serif;
+
+  /* ==========================
+     Radius
+  ========================== */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+
+  /* ==========================
+     Shadows
+  ========================== */
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-button: 0 6px 20px rgba(74, 19, 108, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--background);
+  color: var(--text);
+}
