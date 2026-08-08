@@ -1,10 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "../../../lib/cn";
 
-/**
- * Pagination — page-number strip with prev/next controls.
- * Controlled: pass `page` and `onPageChange`.
- */
 function Pagination({ page, totalPages, onPageChange }) {
   if (totalPages <= 1) return null;
 

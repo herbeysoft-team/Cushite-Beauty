@@ -2,7 +2,6 @@ import { forwardRef } from "react";
 import { Check } from "lucide-react";
 import { cn } from "../../../lib/cn";
 
-/** Checkbox — custom-styled checkbox with a label. Forwards ref for react-hook-form. */
 const Checkbox = forwardRef(function Checkbox(
   { label, className, id, ...props },
   ref

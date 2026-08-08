@@ -3,10 +3,6 @@ import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "../../../lib/cn";
 
-/**
- * Modal — centered dialog rendered via portal. Closes on backdrop
- * click, the X button, or Escape.
- */
 function Modal({ open, onClose, title, children, className }) {
   useEffect(() => {
     if (!open) return;

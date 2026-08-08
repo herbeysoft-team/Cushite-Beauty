@@ -1,10 +1,6 @@
 import { Minus, Plus } from "lucide-react";
 import { cn } from "../../../lib/cn";
 
-/**
- * QuantitySelector — stepper for choosing item quantity.
- * Controlled: pass `value` and `onChange`.
- */
 function QuantitySelector({ value = 1, onChange, min = 1, max = 99, className }) {
   const decrease = () => onChange?.(Math.max(min, value - 1));
   const increase = () => onChange?.(Math.min(max, value + 1));

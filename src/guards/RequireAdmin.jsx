@@ -1,14 +1,13 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function RequireAdmin() {
-  // Temporary
-  const isAdmin = true;
+  const { isAuthenticated, isAdmin } = useAuth();
 
-  return isAdmin ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/" replace />
-  );
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (!isAdmin) return <Navigate to="/" replace />;
+
+  return <Outlet />;
 }
 
 export default RequireAdmin;

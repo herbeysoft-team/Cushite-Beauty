@@ -2,10 +2,6 @@ import { Loader2 } from "lucide-react";
 import { cn } from "../../../lib/cn";
 import { buttonVariants } from "./buttonVariants";
 
-/**
- * <Button variant="primary" size="lg">Shop Collection</Button>
- * Pass `loading` to show a spinner and auto-disable the button.
- */
 function Button({
   variant,
   size,

@@ -1,10 +1,6 @@
 import { forwardRef } from "react";
 import { cn } from "../../../lib/cn";
 
-/**
- * Input — text field with an optional label and error message.
- * Forwards ref so react-hook-form's register() works directly.
- */
 const Input = forwardRef(function Input(
   { label, error, className, id, style, ...props },
   ref

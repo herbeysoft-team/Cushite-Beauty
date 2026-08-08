@@ -1,7 +1,6 @@
 import { Star } from "lucide-react";
 import { cn } from "../../../lib/cn";
 
-/** ProductRating — star rating display, optionally with a review count. */
 function ProductRating({ rating = 0, reviewCount, size = 14, className }) {
   return (
     <div className={cn("flex items-center gap-1", className)}>

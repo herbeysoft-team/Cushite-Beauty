@@ -22,6 +22,7 @@ import { ROUTES } from "./routePaths";
 
 function AppRouter() {
   return (
+   
     <Routes>
       {/* ==========================
           Public Routes

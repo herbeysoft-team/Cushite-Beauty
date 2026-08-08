@@ -1,17 +1,10 @@
 import { Loader2 } from "lucide-react";
 import { cn } from "../../../lib/cn";
 
-/**
- * Loader — spinner for async states. `fullScreen` centers it in the
- * viewport (useful while a route/page is loading data).
- */
 function Loader({ size = 32, fullScreen = false, label, className }) {
   const spinner = (
     <div className={cn("flex flex-col items-center gap-3", className)}>
-      <Loader2
-        size={size}
-        className="animate-spin text-[var(--primary)]"
-      />
+      <Loader2 size={size} className="animate-spin text-[var(--primary)]" />
       {label && (
         <span
           className="text-sm text-[var(--text-light)]"

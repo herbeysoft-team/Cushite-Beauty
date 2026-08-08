@@ -18,7 +18,6 @@ const headingVariants = cva("font-bold text-[var(--primary)]", {
   defaultVariants: { level: "h2", align: "left" },
 });
 
-/** Heading — renders the tag matching `level` (h1..h4) by default for correct SEO/a11y. */
 export function Heading({ level = "h2", align, as, className, style, children, ...props }) {
   const Tag = as || level;
   return (
@@ -56,7 +55,6 @@ const textVariants = cva("text-[var(--text)]", {
   defaultVariants: { size: "base", tone: "default", align: "left" },
 });
 
-/** Text — default body copy component. Renders <p> unless `as` overrides it (e.g. "span"). */
 export function Text({ size, tone, align, as: Tag = "p", className, style, children, ...props }) {
   return (
     <Tag

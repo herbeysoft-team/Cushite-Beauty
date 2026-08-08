@@ -2,10 +2,6 @@ import { forwardRef } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "../../../lib/cn";
 
-/**
- * Select — options passed as [{ value, label }].
- * Forwards ref so it works with react-hook-form's register().
- */
 const Select = forwardRef(function Select(
   { label, error, options = [], placeholder, className, id, style, ...props },
   ref

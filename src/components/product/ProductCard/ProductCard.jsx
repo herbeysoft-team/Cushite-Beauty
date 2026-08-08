@@ -5,36 +5,23 @@ import Badge from "../../ui/Badge";
 import ProductPrice from "../ProductPrice";
 import ProductRating from "../ProductRating";
 import { cn } from "../../../lib/cn";
+import { getPriceRange, isInStock, hasVariants } from "../../../lib/productPricing";
 
-/**
- * ProductCard — the tile used in Shop grids, Home "featured"
- * sections, and search results.
- *
- * product: {
- *   id, name, slug, image, price, compareAtPrice,
- *   rating, reviewCount, isNew, inStock
- * }
- */
 function ProductCard({ product, onAddToCart, onToggleWishlist, className }) {
-  const {
-    name,
-    slug,
-    image,
-    price,
-    compareAtPrice,
-    rating,
-    reviewCount,
-    isNew,
-    inStock = true,
-  } = product;
+  const { name, slug, image, images, rating, reviewCount, isNew } = product;
+
+  const displayImage = image || images?.[0];
+  const { min, max, compareAtPrice } = getPriceRange(product);
+  const inStock = isInStock(product);
+  const needsOptions = hasVariants(product);
 
   return (
     <Card className={cn("group relative overflow-hidden", className)}>
       <Link to={`/product/${slug}`} className="block">
         <div className="relative aspect-square overflow-hidden bg-[var(--background)]">
-          {image ? (
+          {displayImage ? (
             <img
-              src={image}
+              src={displayImage}
               alt={name}
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
@@ -63,6 +50,14 @@ function ProductCard({ product, onAddToCart, onToggleWishlist, className }) {
         </div>
 
         <Card.Body className="!pb-3">
+          {product.category && (
+            <span
+              className="mb-1 block text-xs uppercase tracking-wide text-[var(--text-light)]"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              {product.category}
+            </span>
+          )}
           {rating != null && (
             <ProductRating rating={rating} reviewCount={reviewCount} className="mb-2" />
           )}
@@ -72,26 +67,36 @@ function ProductCard({ product, onAddToCart, onToggleWishlist, className }) {
           >
             {name}
           </h3>
-          <ProductPrice price={price} compareAtPrice={compareAtPrice} className="mt-2" />
+          <ProductPrice min={min} max={max} compareAtPrice={compareAtPrice} className="mt-2" />
         </Card.Body>
       </Link>
 
       <Card.Footer className="!pt-0 !border-t-0 !pb-5">
-        <button
-          type="button"
-          disabled={!inStock}
-          onClick={() => onAddToCart?.(product)}
-          className={cn(
-            "flex w-full items-center justify-center gap-2 rounded-[var(--radius-xl)] py-2.5 text-sm font-medium transition-colors",
-            inStock
-              ? "bg-[var(--primary)] text-[var(--surface)] hover:bg-[var(--primary-dark)]"
-              : "cursor-not-allowed bg-[var(--border)] text-[var(--text-light)]"
-          )}
-          style={{ fontFamily: "'Poppins', sans-serif" }}
-        >
-          <ShoppingBag size={15} />
-          {inStock ? "Add to Cart" : "Unavailable"}
-        </button>
+        {needsOptions ? (
+          <Link
+            to={`/product/${slug}`}
+            className="flex w-full items-center justify-center gap-2 rounded-[var(--radius-xl)] border-2 border-[var(--primary)] py-2.5 text-sm font-medium text-[var(--primary)] transition-colors hover:bg-[var(--primary)] hover:text-[var(--surface)]"
+            style={{ fontFamily: "'Poppins', sans-serif" }}
+          >
+            Select Options
+          </Link>
+        ) : (
+          <button
+            type="button"
+            disabled={!inStock}
+            onClick={() => onAddToCart?.(product)}
+            className={cn(
+              "flex w-full items-center justify-center gap-2 rounded-[var(--radius-xl)] py-2.5 text-sm font-medium transition-colors",
+              inStock
+                ? "bg-[var(--primary)] text-[var(--surface)] hover:bg-[var(--primary-dark)]"
+                : "cursor-not-allowed bg-[var(--border)] text-[var(--text-light)]"
+            )}
+            style={{ fontFamily: "'Poppins', sans-serif" }}
+          >
+            <ShoppingBag size={15} />
+            {inStock ? "Add to Cart" : "Unavailable"}
+          </button>
+        )}
       </Card.Footer>
     </Card>
   );

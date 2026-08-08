@@ -1,7 +1,6 @@
 import { cn } from "../../../lib/cn";
 import { badgeVariants } from "./badgeVariants";
 
-/** Badge — small status/label pill, e.g. "New", "Out of Stock", "-20%". */
 function Badge({ variant, className, style, children, ...props }) {
   return (
     <span

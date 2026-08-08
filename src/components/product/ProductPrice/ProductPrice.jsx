@@ -9,13 +9,18 @@ function formatNaira(amount) {
 }
 
 /**
- * ProductPrice — shows the current price, and a struck-through
- * compareAtPrice + discount badge when the item is on sale.
+ * ProductPrice — pass either a flat `price` (+ optional `compareAtPrice`),
+ * or `min`/`max` for a variant price range. When min !== max it renders
+ * "From ₦X"; when min === max it behaves like a single price.
  */
-function ProductPrice({ price, compareAtPrice, className }) {
-  const onSale = compareAtPrice && compareAtPrice > price;
+function ProductPrice({ price, compareAtPrice, min, max, className }) {
+  const rangeMode = min != null && max != null;
+  const lowPrice = rangeMode ? min : price;
+  const isRange = rangeMode && min !== max;
+
+  const onSale = compareAtPrice && compareAtPrice > lowPrice;
   const discount = onSale
-    ? Math.round(((compareAtPrice - price) / compareAtPrice) * 100)
+    ? Math.round(((compareAtPrice - lowPrice) / compareAtPrice) * 100)
     : 0;
 
   return (
@@ -24,7 +29,8 @@ function ProductPrice({ price, compareAtPrice, className }) {
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       <span className="text-lg font-bold text-[var(--primary)]">
-        {formatNaira(price)}
+        {isRange && "From "}
+        {formatNaira(lowPrice)}
       </span>
       {onSale && (
         <>

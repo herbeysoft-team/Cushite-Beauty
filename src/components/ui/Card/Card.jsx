@@ -1,9 +1,5 @@
 import { cn } from "../../../lib/cn";
 
-/**
- * Card — generic surface used by ProductCard, dashboard panels, etc.
- * Composes with Card.Body / Card.Footer for consistent internal spacing.
- */
 function Card({ className, children, ...props }) {
   return (
     <div

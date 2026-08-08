@@ -2,10 +2,6 @@ import { PackageOpen } from "lucide-react";
 import { Heading, Text } from "../../ui/Typography";
 import Button from "../../ui/Button";
 
-/**
- * EmptyState — shown for empty cart, empty wishlist, no search
- * results, etc. Pass `icon` to override the default illustration.
- */
 function EmptyState({
   icon: Icon = PackageOpen,
   title = "Nothing here yet",
