@@ -71,9 +71,11 @@ function Cart() {
                     >
                       {item.name}
                     </Link>
-                    {(item.size || item.color) && (
+                    {item.options && Object.keys(item.options).length > 0 && (
                       <Text tone="muted" size="sm" className="mt-1">
-                        {[item.size, item.color].filter(Boolean).join(" · ")}
+                        {Object.entries(item.options)
+                          .map(([k, v]) => `${k}: ${v}`)
+                          .join(" · ")}
                       </Text>
                     )}
                     <Text tone="muted" size="sm" className="mt-1">

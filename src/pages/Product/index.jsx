@@ -16,10 +16,11 @@ import { Heading, Text } from "../../components/ui/Typography";
 import { useCart } from "../../context/CartContext";
 import {
   hasVariants,
-  getVariantOptions,
-  findVariant,
-  isInStock,
+  getAttributes,
+  findVariantByOptions,
+  getPriceRange,
 } from "../../lib/productPricing";
+import { cn } from "../../lib/cn";
 
 function Product() {
   const { id: slug } = useParams();
@@ -28,6 +29,7 @@ function Product() {
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [activeImage, setActiveImage] = useState(null);
 
   useEffect(() => {
     let active = true;
@@ -37,6 +39,8 @@ function Product() {
       const data = await getProductBySlug(slug);
       if (active) {
         setProduct(data);
+        setSelected({});
+        setActiveImage(data?.images?.[0] || data?.image || null);
         setLoading(false);
       }
     }
@@ -47,15 +51,19 @@ function Product() {
     };
   }, [slug]);
 
-  const { sizes, colors } = useMemo(
-    () => (product ? getVariantOptions(product) : { sizes: [], colors: [] }),
-    [product]
-  );
+  const attributes = useMemo(() => (product ? getAttributes(product) : []), [product]);
 
   const activeVariant = useMemo(
-    () => (product && hasVariants(product) ? findVariant(product, selected) : null),
+    () => (product ? findVariantByOptions(product, selected) : null),
     [product, selected]
   );
+
+  // Swap the main image to the variant's own image, if it has one.
+  useEffect(() => {
+    if (activeVariant?.image) {
+      setActiveImage(activeVariant.image);
+    }
+  }, [activeVariant]);
 
   if (loading) return <Loader fullScreen label="Loading product..." />;
 
@@ -72,16 +80,25 @@ function Product() {
     );
   }
 
-  const displayImage = product.image || product.images?.[0];
+  const gallery = product.images?.length > 0 ? product.images : product.image ? [product.image] : [];
+  const needsSelection = hasVariants(product);
+  const selectionComplete = !needsSelection || Boolean(activeVariant);
+
   const price = activeVariant?.price ?? product.price;
   const compareAtPrice = activeVariant?.compareAtPrice ?? product.compareAtPrice;
+  const { min, max } = getPriceRange(product);
+
   const inStock = activeVariant
     ? (activeVariant.stock ?? 0) > 0
-    : isInStock(product);
+    : needsSelection
+    ? true // unknown until fully selected — don't block browsing
+    : typeof product.stock === "number"
+    ? product.stock > 0
+    : product.inStock !== false;
 
   const handleAddToCart = () => {
-    if (hasVariants(product) && !activeVariant) {
-      toast.error("Please select a variant");
+    if (needsSelection && !activeVariant) {
+      toast.error("Please select all options");
       return;
     }
     addItem(product, activeVariant, quantity);
@@ -96,16 +113,38 @@ function Product() {
         </Link>
 
         <div className="grid gap-10 lg:grid-cols-2">
-          <div className="aspect-square overflow-hidden rounded-[var(--radius-lg)] bg-[var(--background)]">
-            {displayImage ? (
-              <img src={displayImage} alt={product.name} className="h-full w-full object-cover" />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] text-2xl text-[var(--surface)]">
-                {product.name}
+          {/* Gallery */}
+          <div>
+            <div className="aspect-square overflow-hidden rounded-[var(--radius-lg)] bg-[var(--background)]">
+              {activeImage ? (
+                <img src={activeImage} alt={product.name} className="h-full w-full object-cover" />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] text-2xl text-[var(--surface)]">
+                  {product.name}
+                </div>
+              )}
+            </div>
+
+            {gallery.length > 1 && (
+              <div className="mt-3 flex gap-3">
+                {gallery.map((url) => (
+                  <button
+                    key={url}
+                    type="button"
+                    onClick={() => setActiveImage(url)}
+                    className={cn(
+                      "h-16 w-16 overflow-hidden rounded-[var(--radius-sm)] border-2",
+                      activeImage === url ? "border-[var(--primary)]" : "border-transparent"
+                    )}
+                  >
+                    <img src={url} alt="" className="h-full w-full object-cover" />
+                  </button>
+                ))}
               </div>
             )}
           </div>
 
+          {/* Details */}
           <div className="flex flex-col gap-5">
             {product.category && (
               <span
@@ -122,20 +161,23 @@ function Product() {
               <ProductRating rating={product.rating} reviewCount={product.reviewCount} />
             )}
 
-            <ProductPrice price={price} compareAtPrice={compareAtPrice} />
+            {activeVariant ? (
+              <ProductPrice price={activeVariant.price} compareAtPrice={activeVariant.compareAtPrice} />
+            ) : (
+              <ProductPrice min={min} max={max} compareAtPrice={compareAtPrice} />
+            )}
 
-            {product.description && (
+            {product.shortDescription && (
               <Text tone="muted" size="lg">
-                {product.description}
+                {product.shortDescription}
               </Text>
             )}
 
-            {hasVariants(product) && (
+            {attributes.length > 0 && (
               <VariantSelector
-                sizes={sizes}
-                colors={colors}
+                attributes={attributes}
                 selected={selected}
-                onChange={setSelected}
+                onChange={(name, value) => setSelected((prev) => ({ ...prev, [name]: value }))}
               />
             )}
 
@@ -144,15 +186,26 @@ function Product() {
               <Button
                 variant="primary"
                 size="lg"
-                disabled={!inStock}
+                disabled={!selectionComplete || !inStock}
                 onClick={handleAddToCart}
                 className="flex-1"
               >
-                {inStock ? "Add to Cart" : "Out of Stock"}
+                {!selectionComplete ? "Select Options" : inStock ? "Add to Cart" : "Out of Stock"}
               </Button>
             </div>
 
             <ShippingEstimate product={product} />
+
+            {product.description && (
+              <div className="border-t border-[var(--border)] pt-5">
+                <Heading level="h4" className="mb-2">
+                  Description
+                </Heading>
+                <Text tone="muted" style={{ whiteSpace: "pre-line" }}>
+                  {product.description}
+                </Text>
+              </div>
+            )}
           </div>
         </div>
       </section>

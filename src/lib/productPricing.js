@@ -1,16 +1,30 @@
 /**
- * Products can either have a flat price (legacy / simple products) or a
- * `variants` array where each variant (a size/color combo) carries its
- * own price, compareAtPrice and stock. These helpers let ProductCard,
- * ProductPrice, etc. work with either shape without caring which one
- * they got.
+ * WooCommerce-style product model:
+ *
+ * product = {
+ *   price, compareAtPrice, stock,        // base/default — used when there are no variants
+ *   attributes: [                          // e.g. Color, Size
+ *     { name: "Color", type: "color", options: [{ label, value, swatch }] },
+ *     { name: "Size",  type: "button", options: [{ label, value }] },
+ *   ],
+ *   variants: [                            // one per attribute-value combination
+ *     { id, options: { Color: "red", Size: "m" }, price, compareAtPrice, stock, image },
+ *   ],
+ * }
+ *
+ * A product with no attributes/variants just uses its base price/stock —
+ * these helpers handle both shapes transparently.
  */
 
 export function hasVariants(product) {
   return Array.isArray(product.variants) && product.variants.length > 0;
 }
 
-/** Returns { min, max, compareAtPrice } across all variants, or the flat price. */
+export function getAttributes(product) {
+  return product.attributes || [];
+}
+
+/** Returns { min, max, compareAtPrice } across all variants, or the base price. */
 export function getPriceRange(product) {
   if (!hasVariants(product)) {
     return {
@@ -36,32 +50,57 @@ export function getPriceRange(product) {
   return { min, max, compareAtPrice };
 }
 
-/** Total stock across all variants, or the flat inStock flag. */
+/** Total stock across all variants, or the base stock/inStock flag. */
 export function isInStock(product) {
-  if (!hasVariants(product)) {
-    return product.inStock !== false;
+  if (hasVariants(product)) {
+    return product.variants.some((v) => (v.stock ?? 0) > 0);
   }
-  return product.variants.some((v) => (v.stock ?? 0) > 0);
+  if (typeof product.stock === "number") return product.stock > 0;
+  return product.inStock !== false; // legacy fallback for older docs
 }
 
-/** Unique sizes/colors available, for building selector options. */
-export function getVariantOptions(product) {
-  if (!hasVariants(product)) return { sizes: [], colors: [] };
-
-  const sizes = [...new Set(product.variants.map((v) => v.size).filter(Boolean))];
-  const colors = [...new Set(product.variants.map((v) => v.color).filter(Boolean))];
-
-  return { sizes, colors };
-}
-
-/** Finds the variant matching a given size/color selection. */
-export function findVariant(product, { size, color } = {}) {
+/**
+ * Finds the variant whose `options` match the given selection exactly
+ * for every attribute the product has. Returns null until the person
+ * has picked a value for every attribute.
+ */
+export function findVariantByOptions(product, selected = {}) {
   if (!hasVariants(product)) return null;
 
+  const attributeNames = getAttributes(product).map((a) => a.name);
+  const isComplete = attributeNames.every((name) => selected[name]);
+  if (!isComplete) return null;
+
   return (
-    product.variants.find(
-      (v) => (!size || v.size === size) && (!color || v.color === color)
-    ) || product.variants[0]
+    product.variants.find((v) =>
+      attributeNames.every((name) => v.options?.[name] === selected[name])
+    ) || null
+  );
+}
+
+/** The image to show for the current selection — variant image if it has one, else the product's featured image. */
+export function getDisplayImage(product, variant) {
+  return variant?.image || product.images?.[0] || product.image;
+}
+
+/**
+ * Cartesian product of every attribute's option values — used by the
+ * admin "Generate Variations" button, same as WooCommerce's
+ * "Generate variations from all attributes".
+ */
+export function generateVariantCombinations(attributes) {
+  const usable = attributes.filter((a) => a.name && a.options?.length > 0);
+  if (usable.length === 0) return [];
+
+  return usable.reduce(
+    (combos, attribute) =>
+      combos.flatMap((combo) =>
+        attribute.options.map((option) => ({
+          ...combo,
+          [attribute.name]: option.value,
+        }))
+      ),
+    [{}]
   );
 }
 

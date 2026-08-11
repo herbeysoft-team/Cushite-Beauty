@@ -2,6 +2,8 @@ import {
   doc,
   getDoc,
   setDoc,
+  updateDoc,
+  deleteDoc,
   collection,
   getDocs,
   query,
@@ -18,6 +20,15 @@ export async function createUserProfile(uid, data) {
 export async function getUserProfile(uid) {
   const snap = await getDoc(doc(db, "users", uid));
   return snap.exists() ? { id: snap.id, ...snap.data() } : null;
+}
+
+export async function getAllUsers() {
+  const snap = await getDocs(collection(db, "users"));
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+}
+
+export async function updateUserRole(uid, role) {
+  await updateDoc(doc(db, "users", uid), { role });
 }
 
 /* ---------------- Products ---------------- */
@@ -41,6 +52,19 @@ export async function getProductsByCategory(category) {
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 }
 
+/** Creates a product doc keyed by its slug (so slugs stay unique by construction). */
+export async function createProduct(slug, data) {
+  await setDoc(doc(db, "products", slug), data);
+}
+
+export async function updateProduct(slug, data) {
+  await updateDoc(doc(db, "products", slug), data);
+}
+
+export async function deleteProduct(slug) {
+  await deleteDoc(doc(db, "products", slug));
+}
+
 /* ---------------- Categories ---------------- */
 
 /**
@@ -51,6 +75,14 @@ export async function getProductsByCategory(category) {
 export async function getAllCategories() {
   const snap = await getDocs(collection(db, "categories"));
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+}
+
+export async function createCategory(slug, data) {
+  await setDoc(doc(db, "categories", slug), data);
+}
+
+export async function deleteCategory(slug) {
+  await deleteDoc(doc(db, "categories", slug));
 }
 
 /* ---------------- Cart ---------------- */

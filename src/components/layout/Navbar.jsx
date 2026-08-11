@@ -4,7 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useCart } from "../../context/CartContext";
 
 function Navbar() {
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, isAdmin, user, logout } = useAuth();
   const { totalItems, cartLoading } = useCart();
   const navigate = useNavigate();
 
@@ -39,6 +39,7 @@ function Navbar() {
 
           {isAuthenticated ? (
             <>
+              {isAdmin && <Link to="/admin">Admin</Link>}
               <Link to="/profile">{user?.name || "Profile"}</Link>
               <button onClick={handleLogout} className="text-[#4A136C]">
                 Logout

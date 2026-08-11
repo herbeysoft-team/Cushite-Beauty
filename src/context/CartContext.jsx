@@ -4,13 +4,18 @@ import { getCart, saveCart } from "../services/firebase/firestore";
 import { readGuestCart, writeGuestCart, clearGuestCart, mergeCartItems } from "../lib/cartStorage";
 
 /**
- * Two units of the same product with different size/color are
- * different line items, so the cart key combines product id +
- * variant (size/color) rather than just product id.
+ * Two units of the same product with different attribute selections
+ * (color, size, etc.) are different line items, so the cart key
+ * combines product id + a stable serialization of the variant's
+ * options rather than just product id.
  */
 function getLineId(product, variant) {
   if (!variant) return product.id;
-  return `${product.id}__${variant.size || ""}-${variant.color || ""}`;
+  const optionKey = Object.entries(variant.options || {})
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([k, v]) => `${k}:${v}`)
+    .join("|");
+  return `${product.id}__${optionKey}`;
 }
 
 const SAVE_DEBOUNCE_MS = 800;
@@ -103,6 +108,8 @@ export function CartProvider({ children }) {
     const price = variant?.price ?? product.price;
     const maxStock = variant
       ? variant.stock ?? Infinity
+      : typeof product.stock === "number"
+      ? product.stock
       : product.inStock === false
       ? 0
       : Infinity;
@@ -125,10 +132,9 @@ export function CartProvider({ children }) {
           productId: product.id,
           slug: product.slug,
           name: product.name,
-          image: product.image || product.images?.[0],
+          image: variant?.image || product.image || product.images?.[0],
           price,
-          size: variant?.size,
-          color: variant?.color,
+          options: variant?.options,
           maxStock,
           quantity: Math.min(quantity, maxStock),
         },
