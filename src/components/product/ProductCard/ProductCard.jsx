@@ -1,19 +1,23 @@
 import { Link } from "react-router-dom";
 import { Heart, ShoppingBag } from "lucide-react";
+import { motion } from "framer-motion";
 import Card from "../../ui/Card";
 import Badge from "../../ui/Badge";
 import ProductPrice from "../ProductPrice";
 import ProductRating from "../ProductRating";
 import { cn } from "../../../lib/cn";
 import { getPriceRange, isInStock, hasVariants } from "../../../lib/productPricing";
+import { useWishlist } from "../../../context/WishlistContext";
 
-function ProductCard({ product, onAddToCart, onToggleWishlist, className }) {
+function ProductCard({ product, onAddToCart, className }) {
   const { name, slug, image, images, rating, reviewCount, isNew } = product;
+  const { isInWishlist, toggleItem } = useWishlist();
 
   const displayImage = image || images?.[0];
   const { min, max, compareAtPrice } = getPriceRange(product);
   const inStock = isInStock(product);
   const needsOptions = hasVariants(product);
+  const wishlisted = isInWishlist(product.id);
 
   return (
     <Card className={cn("group relative overflow-hidden", className)}>
@@ -36,17 +40,23 @@ function ProductCard({ product, onAddToCart, onToggleWishlist, className }) {
             {!inStock && <Badge variant="danger">Out of stock</Badge>}
           </div>
 
-          <button
+          <motion.button
             type="button"
+            whileTap={{ scale: 0.8 }}
             onClick={(e) => {
               e.preventDefault();
-              onToggleWishlist?.(product);
+              toggleItem(product);
             }}
-            aria-label="Add to wishlist"
-            className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--surface)]/90 text-[var(--primary)] opacity-0 shadow-sm transition-opacity group-hover:opacity-100"
+            aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
+            className={cn(
+              "absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full shadow-sm transition-opacity",
+              wishlisted
+                ? "bg-[var(--primary)] text-white opacity-100"
+                : "bg-[var(--surface)]/90 text-[var(--primary)] opacity-0 group-hover:opacity-100"
+            )}
           >
-            <Heart size={15} />
-          </button>
+            <Heart size={15} fill={wishlisted ? "currentColor" : "none"} />
+          </motion.button>
         </div>
 
         <Card.Body className="!pb-3">
@@ -81,8 +91,9 @@ function ProductCard({ product, onAddToCart, onToggleWishlist, className }) {
             Select Options
           </Link>
         ) : (
-          <button
+          <motion.button
             type="button"
+            whileTap={{ scale: 0.96 }}
             disabled={!inStock}
             onClick={() => onAddToCart?.(product)}
             className={cn(
@@ -95,7 +106,7 @@ function ProductCard({ product, onAddToCart, onToggleWishlist, className }) {
           >
             <ShoppingBag size={15} />
             {inStock ? "Add to Cart" : "Unavailable"}
-          </button>
+          </motion.button>
         )}
       </Card.Footer>
     </Card>

@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
+import { Heart } from "lucide-react";
 
 import { getProductBySlug } from "../../services/firebase/firestore";
 import {
@@ -14,6 +16,7 @@ import { Loader, EmptyState } from "../../components/common";
 import Button from "../../components/ui/Button";
 import { Heading, Text } from "../../components/ui/Typography";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 import {
   hasVariants,
   getAttributes,
@@ -25,6 +28,7 @@ import { cn } from "../../lib/cn";
 function Product() {
   const { id: slug } = useParams();
   const { addItem } = useCart();
+  const { isInWishlist, toggleItem } = useWishlist();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState({});
@@ -112,7 +116,12 @@ function Product() {
           ← Back to Shop
         </Link>
 
-        <div className="grid gap-10 lg:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="grid gap-10 lg:grid-cols-2"
+        >
           {/* Gallery */}
           <div>
             <div className="aspect-square overflow-hidden rounded-[var(--radius-lg)] bg-[var(--background)]">
@@ -192,6 +201,20 @@ function Product() {
               >
                 {!selectionComplete ? "Select Options" : inStock ? "Add to Cart" : "Out of Stock"}
               </Button>
+              <motion.button
+                type="button"
+                whileTap={{ scale: 0.85 }}
+                onClick={() => toggleItem(product)}
+                aria-label={isInWishlist(product.id) ? "Remove from wishlist" : "Add to wishlist"}
+                className={cn(
+                  "flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 transition-colors",
+                  isInWishlist(product.id)
+                    ? "border-[var(--primary)] bg-[var(--primary)] text-white"
+                    : "border-[var(--border)] text-[var(--primary)]"
+                )}
+              >
+                <Heart size={20} fill={isInWishlist(product.id) ? "currentColor" : "none"} />
+              </motion.button>
             </div>
 
             <ShippingEstimate product={product} />
@@ -207,7 +230,7 @@ function Product() {
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
       </section>
     </main>
   );

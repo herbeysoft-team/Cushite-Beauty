@@ -5,6 +5,7 @@ export const ROUTES = {
     PRODUCT: "/product/:id",
     CART: "/cart",
     CHECKOUT: "/checkout",
+    ORDER_CONFIRMATION: "/order-confirmation/:orderId",
     LOGIN: "/login",
     REGISTER: "/register",
   },
@@ -22,6 +23,7 @@ export const ROUTES = {
     PRODUCT_EDIT: "/admin/products/:slug/edit",
     CATEGORIES: "/admin/categories",
     ORDERS: "/admin/orders",
+    ORDER_DETAIL: "/admin/orders/:orderId",
     CUSTOMERS: "/admin/customers",
   },
 };

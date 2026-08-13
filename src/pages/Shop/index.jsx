@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 import { getAllProducts, getAllCategories } from "../../services/firebase/firestore";
 import { ProductCard } from "../../components/product";
@@ -8,12 +10,24 @@ import Select from "../../components/forms/Select";
 import { Heading, Text } from "../../components/ui/Typography";
 import { useCart } from "../../context/CartContext";
 
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.06 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
+};
+
 function Shop() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCategory = searchParams.get("category") || "";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { addItem } = useCart();
 
   useEffect(() => {
     let active = true;
@@ -48,16 +62,9 @@ function Shop() {
 
   const categoryOptions = categories.map((c) => ({ value: c.slug, label: c.name }));
 
-  const { addItem } = useCart();
-
   const handleAddToCart = (product) => {
     addItem(product, undefined, 1);
     toast.success(`${product.name} added to cart`);
-  };
-
-  const handleToggleWishlist = (product) => {
-    // TODO: wire to a wishlist service/context
-    toast.success(`${product.name} added to wishlist`);
   };
 
   return (
@@ -76,7 +83,10 @@ function Shop() {
               placeholder="All Categories"
               options={categoryOptions}
               value={activeCategory}
-              onChange={(e) => setActiveCategory(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setSearchParams(value ? { category: value } : {});
+              }}
             />
           </div>
         )}
@@ -98,16 +108,19 @@ function Shop() {
         )}
 
         {!loading && !error && filteredProducts.length > 0 && (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <motion.div
+            key={activeCategory}
+            variants={gridVariants}
+            initial="hidden"
+            animate="show"
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          >
             {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onAddToCart={handleAddToCart}
-                onToggleWishlist={handleToggleWishlist}
-              />
+              <motion.div key={product.id} variants={cardVariants}>
+                <ProductCard product={product} onAddToCart={handleAddToCart} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
       </section>
     </main>

@@ -5,8 +5,8 @@ import { getUserProfile } from "../services/firebase/firestore";
 const AuthContext = createContext(undefined);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null); // { uid, name, email, role }
-  const [loading, setLoading] = useState(true); // true until first auth check resolves
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = watchAuthState(async (firebaseUser) => {

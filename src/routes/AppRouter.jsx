@@ -11,6 +11,7 @@ import Shop from "../pages/Shop";
 import Product from "../pages/Product";
 import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
+import OrderConfirmation from "../pages/OrderConfirmation";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
@@ -22,6 +23,8 @@ import AdminDashboard from "../pages/Admin/Dashboard";
 import AdminProducts from "../pages/Admin/Products";
 import AdminProductForm from "../pages/Admin/Products/AdminProductForm";
 import AdminCategories from "../pages/Admin/Categories";
+import AdminOrders from "../pages/Admin/Orders";
+import AdminOrderDetail from "../pages/Admin/Orders/AdminOrderDetail";
 import AdminCustomers from "../pages/Admin/Customers";
 
 import { ROUTES } from "./routePaths";
@@ -35,6 +38,8 @@ function AppRouter() {
         <Route path={ROUTES.PUBLIC.PRODUCT} element={<Product />} />
         <Route path={ROUTES.PUBLIC.CART} element={<Cart />} />
         <Route path={ROUTES.PUBLIC.CHECKOUT} element={<Checkout />} />
+        <Route path={ROUTES.PUBLIC.ORDER_CONFIRMATION} element={<OrderConfirmation />} />
+        <Route path={ROUTES.USER.WISHLIST} element={<Wishlist />} />
         <Route path={ROUTES.PUBLIC.LOGIN} element={<Login />} />
         <Route path={ROUTES.PUBLIC.REGISTER} element={<Register />} />
       </Route>
@@ -43,7 +48,6 @@ function AppRouter() {
         <Route element={<Layout />}>
           <Route path={ROUTES.USER.PROFILE} element={<Profile />} />
           <Route path={ROUTES.USER.ORDERS} element={<Orders />} />
-          <Route path={ROUTES.USER.WISHLIST} element={<Wishlist />} />
         </Route>
       </Route>
 
@@ -54,6 +58,8 @@ function AppRouter() {
           <Route path={ROUTES.ADMIN.PRODUCT_NEW} element={<AdminProductForm />} />
           <Route path={ROUTES.ADMIN.PRODUCT_EDIT} element={<AdminProductForm />} />
           <Route path={ROUTES.ADMIN.CATEGORIES} element={<AdminCategories />} />
+          <Route path={ROUTES.ADMIN.ORDERS} element={<AdminOrders />} />
+          <Route path={ROUTES.ADMIN.ORDER_DETAIL} element={<AdminOrderDetail />} />
           <Route path={ROUTES.ADMIN.CUSTOMERS} element={<AdminCustomers />} />
         </Route>
       </Route>

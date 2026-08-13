@@ -8,11 +8,6 @@ import {
 import { auth } from "./config";
 import { createUserProfile } from "./firestore";
 
-/**
- * Creates the Firebase Auth user, sets their display name, and
- * writes a matching profile doc to Firestore (role defaults to
- * "customer" — promote to "admin" manually in the console for now).
- */
 export async function registerUser({ name, email, password }) {
   const { user } = await createUserWithEmailAndPassword(auth, email, password);
   await updateProfile(user, { displayName: name });
@@ -33,7 +28,6 @@ export async function logoutUser() {
   await signOut(auth);
 }
 
-/** Subscribes to auth state changes. Returns the unsubscribe function. */
 export function watchAuthState(callback) {
   return onAuthStateChanged(auth, callback);
 }

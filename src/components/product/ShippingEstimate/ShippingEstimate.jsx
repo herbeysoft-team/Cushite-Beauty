@@ -2,14 +2,7 @@ import { useState } from "react";
 import { Truck } from "lucide-react";
 import Select from "../../forms/Select";
 import { SHIPPING_LOCATIONS, getShippingCost } from "../../../lib/productPricing";
-
-function formatNaira(amount) {
-  return new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
+import { formatGBP } from "../../../lib/currency";
 
 /** ShippingEstimate — location picker that shows the shipping cost for a product. */
 function ShippingEstimate({ product }) {
@@ -36,7 +29,7 @@ function ShippingEstimate({ product }) {
         style={{ fontFamily: "'Poppins', sans-serif" }}
       >
         {cost != null
-          ? `${formatNaira(cost)} to this location`
+          ? `${formatGBP(cost)} to this location`
           : "Shipping cost unavailable for this location"}
       </p>
     </div>

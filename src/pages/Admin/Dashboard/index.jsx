@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Package, Tags, Users, TrendingUp } from "lucide-react";
+import { Package, Tags, Users, TrendingUp, ClipboardList } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   getAllProducts,
   getAllCategories,
   getAllUsers,
+  getAllOrders,
 } from "../../../services/firebase/firestore";
 import { Loader } from "../../../components/common";
 import { Heading, Text } from "../../../components/ui/Typography";
@@ -37,10 +38,11 @@ function Dashboard() {
     let active = true;
 
     async function loadStats() {
-      const [products, categories, users] = await Promise.all([
+      const [products, categories, users, orders] = await Promise.all([
         getAllProducts(),
         getAllCategories(),
         getAllUsers(),
+        getAllOrders(),
       ]);
 
       if (!active) return;
@@ -50,6 +52,9 @@ function Dashboard() {
         outOfStockCount: products.filter((p) => !isInStock(p)).length,
         categoryCount: categories.length,
         userCount: users.length,
+        pendingOrderCount: orders.filter((o) =>
+          ["pending", "awaiting_payment"].includes(o.status)
+        ).length,
       });
       setLoading(false);
     }
@@ -83,6 +88,12 @@ function Dashboard() {
           label="Out of Stock"
           value={stats.outOfStockCount}
           to={ROUTES.ADMIN.PRODUCTS}
+        />
+        <StatCard
+          icon={ClipboardList}
+          label="Orders to Process"
+          value={stats.pendingOrderCount}
+          to={ROUTES.ADMIN.ORDERS}
         />
         <StatCard
           icon={Tags}

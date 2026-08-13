@@ -115,3 +115,19 @@ export function getShippingCost(product, location) {
   if (!product.shipping) return null;
   return product.shipping[location] ?? null;
 }
+
+/**
+ * Total shipping for a cart at checkout. Shipping is charged once per
+ * distinct product (not per unit/quantity), summed across every unique
+ * product in the cart for the chosen location.
+ *
+ * shippingRatesByProductId: { [productId]: { edinburgh, uk, africa } }
+ */
+export function getCartShippingTotal(cartItems, shippingRatesByProductId, location) {
+  const uniqueProductIds = [...new Set(cartItems.map((i) => i.productId))];
+  return uniqueProductIds.reduce((total, productId) => {
+    const rates = shippingRatesByProductId[productId];
+    const cost = rates?.[location] ?? 0;
+    return total + cost;
+  }, 0);
+}

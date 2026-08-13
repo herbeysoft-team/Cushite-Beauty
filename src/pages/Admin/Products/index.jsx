@@ -10,14 +10,7 @@ import Button from "../../../components/ui/Button";
 import Badge from "../../../components/ui/Badge";
 import { Heading, Text } from "../../../components/ui/Typography";
 import { ROUTES } from "../../../routes/routePaths";
-
-function formatNaira(amount) {
-  return new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
+import { formatGBP } from "../../../lib/currency";
 
 function AdminProducts() {
   const [products, setProducts] = useState([]);
@@ -96,7 +89,7 @@ function AdminProducts() {
                     {!inStock && <Badge variant="danger">Out of stock</Badge>}
                   </div>
                   <p className="mt-2 text-sm font-semibold text-[var(--primary)]">
-                    {min === max ? formatNaira(min) : `${formatNaira(min)} – ${formatNaira(max)}`}
+                    {min === max ? formatGBP(min) : `${formatGBP(min)} – ${formatGBP(max)}`}
                   </p>
                   <div className="mt-3 flex gap-2">
                     <Link to={`/admin/products/${product.slug}/edit`} className="flex-1">
@@ -134,7 +127,7 @@ function AdminProducts() {
                       <td className="px-5 py-3 font-medium text-[var(--text)]">{product.name}</td>
                       <td className="px-5 py-3 text-[var(--text-light)]">{product.category || "—"}</td>
                       <td className="px-5 py-3 text-[var(--text)]">
-                        {min === max ? formatNaira(min) : `${formatNaira(min)} – ${formatNaira(max)}`}
+                        {min === max ? formatGBP(min) : `${formatGBP(min)} – ${formatGBP(max)}`}
                       </td>
                       <td className="px-5 py-3">
                         {inStock ? (

@@ -1,17 +1,10 @@
 import { cn } from "../../../lib/cn";
-
-function formatNaira(amount) {
-  return new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
+import { formatGBP } from "../../../lib/currency";
 
 /**
  * ProductPrice — pass either a flat `price` (+ optional `compareAtPrice`),
  * or `min`/`max` for a variant price range. When min !== max it renders
- * "From ₦X"; when min === max it behaves like a single price.
+ * "From £X"; when min === max it behaves like a single price.
  */
 function ProductPrice({ price, compareAtPrice, min, max, className }) {
   const rangeMode = min != null && max != null;
@@ -30,12 +23,12 @@ function ProductPrice({ price, compareAtPrice, min, max, className }) {
     >
       <span className="text-lg font-bold text-[var(--primary)]">
         {isRange && "From "}
-        {formatNaira(lowPrice)}
+        {formatGBP(lowPrice)}
       </span>
       {onSale && (
         <>
           <span className="text-sm text-[var(--text-light)] line-through">
-            {formatNaira(compareAtPrice)}
+            {formatGBP(compareAtPrice)}
           </span>
           <span className="text-xs font-semibold text-[var(--danger)]">
             -{discount}%

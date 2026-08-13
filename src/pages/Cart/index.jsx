@@ -5,14 +5,7 @@ import { QuantitySelector } from "../../components/product";
 import { EmptyState, Loader } from "../../components/common";
 import Button from "../../components/ui/Button";
 import { Heading, Text } from "../../components/ui/Typography";
-
-function formatNaira(amount) {
-  return new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
+import { formatGBP } from "../../lib/currency";
 
 function Cart() {
   const { items, cartLoading, removeItem, updateQuantity, subtotal } = useCart();
@@ -79,7 +72,7 @@ function Cart() {
                       </Text>
                     )}
                     <Text tone="muted" size="sm" className="mt-1">
-                      {formatNaira(item.price)} each
+                      {formatGBP(item.price)} each
                     </Text>
                   </div>
 
@@ -108,7 +101,7 @@ function Cart() {
             </Heading>
             <div className="flex items-center justify-between text-sm text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
               <span>Subtotal</span>
-              <span className="font-semibold">{formatNaira(subtotal)}</span>
+              <span className="font-semibold">{formatGBP(subtotal)}</span>
             </div>
             <Text tone="muted" size="xs" className="mt-2">
               Shipping is calculated at checkout.

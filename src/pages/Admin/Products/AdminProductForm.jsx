@@ -307,16 +307,18 @@ function AdminProductForm() {
           </Text>
           <div className="grid gap-4 sm:grid-cols-3">
             <Input
-              label="Price (₦)"
+              label="Price (£)"
               type="number"
-              placeholder="15000"
+              step="0.01"
+              placeholder="25.00"
               error={errors.price?.message}
               {...register("price", { required: "Price is required" })}
             />
             <Input
-              label="Compare At (₦)"
+              label="Compare At (£)"
               type="number"
-              placeholder="20000"
+              step="0.01"
+              placeholder="35.00"
               {...register("compareAtPrice")}
             />
             <Input label="Stock" type="number" placeholder="20" {...register("stock")} />
@@ -411,15 +413,17 @@ function AdminProductForm() {
 
                     <div className="grid gap-3 sm:grid-cols-3">
                       <Input
-                        label="Price (₦)"
+                        label="Price (£)"
                         type="number"
-                        placeholder="15000"
+                        step="0.01"
+                        placeholder="25.00"
                         {...register(`variants.${index}.price`, { required: true })}
                       />
                       <Input
-                        label="Compare At (₦)"
+                        label="Compare At (£)"
                         type="number"
-                        placeholder="20000"
+                        step="0.01"
+                        placeholder="35.00"
                         {...register(`variants.${index}.compareAtPrice`)}
                       />
                       <Input
@@ -449,11 +453,11 @@ function AdminProductForm() {
 
         {/* Shipping */}
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-          <Text className="mb-4 font-semibold">Shipping Cost by Location (₦)</Text>
+          <Text className="mb-4 font-semibold">Shipping Cost by Location (£)</Text>
           <div className="grid gap-4 sm:grid-cols-3">
-            <Input label="Edinburgh" type="number" placeholder="1500" {...register("shippingEdinburgh")} />
-            <Input label="Rest of UK" type="number" placeholder="3000" {...register("shippingUk")} />
-            <Input label="Africa" type="number" placeholder="8000" {...register("shippingAfrica")} />
+            <Input label="Edinburgh" type="number" step="0.01" placeholder="3.50" {...register("shippingEdinburgh")} />
+            <Input label="Rest of UK" type="number" step="0.01" placeholder="6.00" {...register("shippingUk")} />
+            <Input label="Africa" type="number" step="0.01" placeholder="15.00" {...register("shippingAfrica")} />
           </div>
         </section>
 

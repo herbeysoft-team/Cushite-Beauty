@@ -5,6 +5,7 @@ import {
   Package,
   Tags,
   Users,
+  ClipboardList,
   Menu,
   X,
   LogOut,
@@ -17,6 +18,7 @@ import { cn } from "../../lib/cn";
 const NAV_ITEMS = [
   { to: ROUTES.ADMIN.DASHBOARD, label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: ROUTES.ADMIN.PRODUCTS, label: "Products", icon: Package },
+  { to: ROUTES.ADMIN.ORDERS, label: "Orders", icon: ClipboardList },
   { to: ROUTES.ADMIN.CATEGORIES, label: "Categories", icon: Tags },
   { to: ROUTES.ADMIN.CUSTOMERS, label: "Customers", icon: Users },
 ];
