@@ -32,7 +32,8 @@ function GalleryUpload({ images = [], onChange, pathPrefix, label = "Product Ima
 
     setProgress(0);
     try {
-      const { url } = await uploadImage(file, `cushite-beauty/products/${pathPrefix}`, setProgress);
+      // const { url } = await uploadImage(file, `cushite-beauty/products/${pathPrefix}`, setProgress);
+      const { url } = await uploadImage(file, `products/${pathPrefix}`, setProgress);
       onChange([...images, url]);
       toast.success("Image uploaded");
     } catch (err) {
