@@ -32,7 +32,7 @@ function ImageUpload({ value, onChange, pathPrefix, label = "Product Image" }) {
 
     setProgress(0);
     try {
-      const { url } = await uploadImage(file, `cushite-beauty/products/${pathPrefix}`, setProgress);
+      const { url } = await uploadImage(file, `products/${pathPrefix}`, setProgress);
       onChange(url);
       toast.success("Image uploaded");
     } catch (err) {
