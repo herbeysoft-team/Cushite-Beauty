@@ -7,7 +7,7 @@ import { getAllProducts, getAllCategories } from "../../services/firebase/firest
 import { ProductCard } from "../../components/product";
 import { Loader, EmptyState } from "../../components/common";
 import Select from "../../components/forms/Select";
-import { Heading, Text } from "../../components/ui/Typography";
+import PageHeader from "../../components/layout/PageHeader";
 import { useCart } from "../../context/CartContext";
 
 const gridVariants = {
@@ -69,14 +69,12 @@ function Shop() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <Heading level="h1" align="center" className="mb-3">
-          Shop All Products
-        </Heading>
-        <Text tone="muted" align="center" className="mx-auto mb-8 max-w-xl">
-          Browse our full collection of skincare, makeup and fragrances.
-        </Text>
+      <PageHeader
+        title="Shop All Products"
+        subtitle="Browse our full collection of skincare, makeup and fragrances."
+      />
 
+      <section className="mx-auto max-w-7xl px-6 py-16">
         {categoryOptions.length > 0 && (
           <div className="mx-auto mb-10 max-w-xs">
             <Select

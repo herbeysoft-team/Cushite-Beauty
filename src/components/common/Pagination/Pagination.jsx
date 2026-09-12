@@ -9,7 +9,7 @@ function Pagination({ page, totalPages, onPageChange }) {
   return (
     <nav
       className="flex items-center justify-center gap-2"
-      style={{ fontFamily: "'Poppins', sans-serif" }}
+      style={{ fontFamily: "'DM Sans', sans-serif" }}
     >
       <button
         onClick={() => onPageChange(Math.max(1, page - 1))}

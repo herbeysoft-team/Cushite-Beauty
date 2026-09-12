@@ -8,7 +8,7 @@ function Loader({ size = 32, fullScreen = false, label, className }) {
       {label && (
         <span
           className="text-sm text-[var(--text-light)]"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {label}
         </span>

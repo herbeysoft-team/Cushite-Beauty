@@ -15,7 +15,7 @@ function Button({
   return (
     <button
       className={cn(buttonVariants({ variant, size }), className)}
-      style={{ fontFamily: "'Poppins', sans-serif", ...style }}
+      style={{ fontFamily: "'DM Sans', sans-serif", ...style }}
       disabled={disabled || loading}
       {...props}
     >

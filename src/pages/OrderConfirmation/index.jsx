@@ -75,7 +75,7 @@ function OrderConfirmation() {
           {order.paymentMethod === "bank_transfer" && (
             <div className="mt-6 rounded-[var(--radius-md)] bg-[var(--background)] p-5 text-left">
               <Text className="mb-3 font-semibold">Transfer {formatGBP(order.total)} to:</Text>
-              <div className="flex flex-col gap-1 text-sm text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              <div className="flex flex-col gap-1 text-sm text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 <span><strong>Account Name:</strong> {BANK_DETAILS.accountName}</span>
                 <span><strong>Account Number:</strong> {BANK_DETAILS.accountNumber}</span>
                 <span><strong>Sort Code:</strong> {BANK_DETAILS.sortCode}</span>

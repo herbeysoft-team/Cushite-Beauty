@@ -17,6 +17,9 @@ import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import Orders from "../pages/Orders";
 import Wishlist from "../pages/Wishlist";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import Privacy from "../pages/Privacy";
 import NotFound from "../pages/NotFound";
 
 import AdminDashboard from "../pages/Admin/Dashboard";
@@ -40,6 +43,9 @@ function AppRouter() {
         <Route path={ROUTES.PUBLIC.CHECKOUT} element={<Checkout />} />
         <Route path={ROUTES.PUBLIC.ORDER_CONFIRMATION} element={<OrderConfirmation />} />
         <Route path={ROUTES.USER.WISHLIST} element={<Wishlist />} />
+        <Route path={ROUTES.PUBLIC.ABOUT} element={<About />} />
+        <Route path={ROUTES.PUBLIC.CONTACT} element={<Contact />} />
+        <Route path={ROUTES.PUBLIC.PRIVACY} element={<Privacy />} />
         <Route path={ROUTES.PUBLIC.LOGIN} element={<Login />} />
         <Route path={ROUTES.PUBLIC.REGISTER} element={<Register />} />
       </Route>

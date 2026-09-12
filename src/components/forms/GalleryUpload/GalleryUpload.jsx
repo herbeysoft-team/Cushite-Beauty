@@ -59,11 +59,11 @@ function GalleryUpload({ images = [], onChange, pathPrefix, label = "Product Ima
     <div className="flex flex-col gap-1.5">
       <span
         className="text-sm font-medium text-[var(--text)]"
-        style={{ fontFamily: "'Poppins', sans-serif" }}
+        style={{ fontFamily: "'DM Sans', sans-serif" }}
       >
         {label}
       </span>
-      <p className="text-xs text-[var(--text-light)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <p className="text-xs text-[var(--text-light)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
         The first image is the product thumbnail. Click the star on another image to make it featured.
       </p>
 
@@ -113,7 +113,7 @@ function GalleryUpload({ images = [], onChange, pathPrefix, label = "Product Ima
             "flex h-32 w-32 flex-col items-center justify-center gap-2 rounded-[var(--radius-md)] border-2 border-dashed border-[var(--border)] text-[var(--text-light)] transition-colors",
             progress === null && "hover:border-[var(--primary)] hover:text-[var(--primary)]"
           )}
-          style={{ fontFamily: "'Poppins', sans-serif" }}
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {progress !== null ? (
             <>

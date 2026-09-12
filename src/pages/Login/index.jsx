@@ -42,40 +42,47 @@ function Login() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#FAFAFA] px-6 py-20">
-      <div className="w-full max-w-md rounded-[var(--radius-lg)] bg-[var(--surface)] p-8 shadow-[var(--shadow-card)]">
-        <Heading level="h3" align="center" className="mb-2">
-          Welcome Back
-        </Heading>
-        <Text tone="muted" align="center" className="mb-8">
-          Log in to your Cushite Beauty account.
-        </Text>
+      <div className="w-full max-w-md overflow-hidden rounded-[var(--radius-lg)] bg-[var(--surface)] shadow-[var(--shadow-card)]">
+        <div
+          className="px-8 py-8 text-center"
+          style={{ background: "linear-gradient(135deg,#4A136C 0%, #381055 100%)" }}
+        >
+          <Heading level="h3" align="center" className="!text-white">
+            Welcome Back
+          </Heading>
+          <Text align="center" className="mt-2 text-white/70">
+            Log in to your Cushite Beauty account.
+          </Text>
+        </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-          <Input
-            label="Email"
-            type="email"
-            placeholder="you@example.com"
-            error={errors.email?.message}
-            {...register("email")}
-          />
-          <Input
-            label="Password"
-            type="password"
-            placeholder="••••••••"
-            error={errors.password?.message}
-            {...register("password")}
-          />
-          <Button type="submit" variant="primary" size="lg" loading={submitting} className="mt-2">
-            Log In
-          </Button>
-        </form>
+        <div className="p-8">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+            <Input
+              label="Email"
+              type="email"
+              placeholder="you@example.com"
+              error={errors.email?.message}
+              {...register("email")}
+            />
+            <Input
+              label="Password"
+              type="password"
+              placeholder="••••••••"
+              error={errors.password?.message}
+              {...register("password")}
+            />
+            <Button type="submit" variant="primary" size="lg" loading={submitting} className="mt-2">
+              Log In
+            </Button>
+          </form>
 
-        <Text align="center" size="sm" tone="muted" className="mt-6">
-          Don't have an account?{" "}
-          <Link to="/register" className="font-semibold text-[var(--primary)]">
-            Create one
-          </Link>
-        </Text>
+          <Text align="center" size="sm" tone="muted" className="mt-6">
+            Don't have an account?{" "}
+            <Link to="/register" className="font-semibold text-[var(--primary)]">
+              Create one
+            </Link>
+          </Text>
+        </div>
       </div>
     </main>
   );

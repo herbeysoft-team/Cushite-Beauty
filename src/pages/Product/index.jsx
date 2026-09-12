@@ -158,13 +158,13 @@ function Product() {
             {product.category && (
               <span
                 className="text-xs uppercase tracking-wide text-[var(--text-light)]"
-                style={{ fontFamily: "'Poppins', sans-serif" }}
+                style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
               >
                 {product.category}
               </span>
             )}
 
-            <Heading level="h2">{product.name}</Heading>
+            <Heading level="h2" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>{product.name}</Heading>
 
             {product.rating != null && (
               <ProductRating rating={product.rating} reviewCount={product.reviewCount} />
@@ -177,7 +177,7 @@ function Product() {
             )}
 
             {product.shortDescription && (
-              <Text tone="muted" size="lg">
+              <Text tone="muted" size="lg" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
                 {product.shortDescription}
               </Text>
             )}
@@ -221,10 +221,10 @@ function Product() {
 
             {product.description && (
               <div className="border-t border-[var(--border)] pt-5">
-                <Heading level="h4" className="mb-2">
+                <Heading level="h4" className="mb-2" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
                   Description
                 </Heading>
-                <Text tone="muted" style={{ whiteSpace: "pre-line" }}>
+                <Text tone="muted" style={{ whiteSpace: "pre-line", fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
                   {product.description}
                 </Text>
               </div>

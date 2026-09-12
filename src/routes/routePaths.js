@@ -8,6 +8,9 @@ export const ROUTES = {
     ORDER_CONFIRMATION: "/order-confirmation/:orderId",
     LOGIN: "/login",
     REGISTER: "/register",
+    ABOUT: "/about",
+    CONTACT: "/contact",
+    PRIVACY: "/privacy-policy",
   },
 
   USER: {

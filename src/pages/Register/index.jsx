@@ -48,48 +48,55 @@ function Register() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#FAFAFA] px-6 py-20">
-      <div className="w-full max-w-md rounded-[var(--radius-lg)] bg-[var(--surface)] p-8 shadow-[var(--shadow-card)]">
-        <Heading level="h3" align="center" className="mb-2">
-          Create an Account
-        </Heading>
-        <Text tone="muted" align="center" className="mb-8">
-          Join Cushite Beauty for a personalized experience.
-        </Text>
+      <div className="w-full max-w-md overflow-hidden rounded-[var(--radius-lg)] bg-[var(--surface)] shadow-[var(--shadow-card)]">
+        <div
+          className="px-8 py-8 text-center"
+          style={{ background: "linear-gradient(135deg,#4A136C 0%, #381055 100%)" }}
+        >
+          <Heading level="h3" align="center" className="!text-white">
+            Create an Account
+          </Heading>
+          <Text align="center" className="mt-2 text-white/70">
+            Join Cushite Beauty for a personalized experience.
+          </Text>
+        </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-          <Input label="Full Name" placeholder="Jane Doe" error={errors.name?.message} {...register("name")} />
-          <Input
-            label="Email"
-            type="email"
-            placeholder="you@example.com"
-            error={errors.email?.message}
-            {...register("email")}
-          />
-          <Input
-            label="Password"
-            type="password"
-            placeholder="••••••••"
-            error={errors.password?.message}
-            {...register("password")}
-          />
-          <Input
-            label="Confirm Password"
-            type="password"
-            placeholder="••••••••"
-            error={errors.confirmPassword?.message}
-            {...register("confirmPassword")}
-          />
-          <Button type="submit" variant="primary" size="lg" loading={submitting} className="mt-2">
-            Create Account
-          </Button>
-        </form>
+        <div className="p-8">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+            <Input label="Full Name" placeholder="Jane Doe" error={errors.name?.message} {...register("name")} />
+            <Input
+              label="Email"
+              type="email"
+              placeholder="you@example.com"
+              error={errors.email?.message}
+              {...register("email")}
+            />
+            <Input
+              label="Password"
+              type="password"
+              placeholder="••••••••"
+              error={errors.password?.message}
+              {...register("password")}
+            />
+            <Input
+              label="Confirm Password"
+              type="password"
+              placeholder="••••••••"
+              error={errors.confirmPassword?.message}
+              {...register("confirmPassword")}
+            />
+            <Button type="submit" variant="primary" size="lg" loading={submitting} className="mt-2">
+              Create Account
+            </Button>
+          </form>
 
-        <Text align="center" size="sm" tone="muted" className="mt-6">
-          Already have an account?{" "}
-          <Link to="/login" className="font-semibold text-[var(--primary)]">
-            Log in
-          </Link>
-        </Text>
+          <Text align="center" size="sm" tone="muted" className="mt-6">
+            Already have an account?{" "}
+            <Link to="/login" className="font-semibold text-[var(--primary)]">
+              Log in
+            </Link>
+          </Text>
+        </div>
       </div>
     </main>
   );

@@ -13,7 +13,7 @@ const Input = forwardRef(function Input(
         <label
           htmlFor={inputId}
           className="text-sm font-medium text-[var(--text)]"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {label}
         </label>
@@ -27,7 +27,7 @@ const Input = forwardRef(function Input(
           error && "border-[var(--danger)] focus:border-[var(--danger)]",
           className
         )}
-        style={{ fontFamily: "'Poppins', sans-serif", ...style }}
+        style={{ fontFamily: "'DM Sans', sans-serif", ...style }}
         {...props}
       />
       {error && (

@@ -7,7 +7,8 @@ import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { EmptyState, Loader } from "../../components/common";
 import Button from "../../components/ui/Button";
-import { Heading, Text } from "../../components/ui/Typography";
+import { Text } from "../../components/ui/Typography";
+import PageHeader from "../../components/layout/PageHeader";
 import { formatGBP } from "../../lib/currency";
 
 function Wishlist() {
@@ -46,14 +47,12 @@ function Wishlist() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <Heading level="h1" className="mb-1">
-          Your Wishlist
-        </Heading>
-        <Text tone="muted" className="mb-10">
-          {items.length} item{items.length !== 1 && "s"} saved
-        </Text>
+      <PageHeader
+        title="Your Wishlist"
+        subtitle={`${items.length} item${items.length !== 1 ? "s" : ""} saved`}
+      />
 
+      <section className="mx-auto max-w-5xl px-6 py-16">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {items.map((item) => (
@@ -85,7 +84,7 @@ function Wishlist() {
                     )}
                   </div>
                   <div className="p-4">
-                    <p className="truncate text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    <p className="truncate text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                       {item.name}
                     </p>
                     {item.price != null && (

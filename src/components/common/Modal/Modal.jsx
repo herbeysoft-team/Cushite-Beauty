@@ -42,7 +42,7 @@ function Modal({ open, onClose, title, children, className }) {
               {title && (
                 <h3
                   className="text-xl font-bold text-[var(--primary)]"
-                  style={{ fontFamily: "Playfair Display" }}
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {title}
                 </h3>

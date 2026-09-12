@@ -18,7 +18,7 @@ function VariantSelector({ attributes = [], selected = {}, onChange }) {
         <div key={attribute.name}>
           <span
             className="mb-2 block text-sm font-medium text-[var(--text)]"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
           >
             {attribute.name}
             {selected[attribute.name] && (
@@ -73,7 +73,7 @@ function VariantSelector({ attributes = [], selected = {}, onChange }) {
                       ? "border-[var(--primary)] bg-[var(--primary)] text-[var(--surface)]"
                       : "border-[var(--border)] text-[var(--text)] hover:border-[var(--primary)]"
                   )}
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {option.label}
                 </button>

@@ -37,10 +37,10 @@ function StatCard({ icon: Icon, label, value }) {
       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--primary)]/10">
         <Icon size={18} className="text-[var(--primary)]" />
       </div>
-      <p className="text-2xl font-bold text-[var(--primary)]" style={{ fontFamily: "Playfair Display" }}>
+      <p className="text-2xl font-bold text-[var(--primary)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
         {value}
       </p>
-      <p className="text-sm text-[var(--text-light)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <p className="text-sm text-[var(--text-light)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
         {label}
       </p>
     </motion.div>
@@ -135,26 +135,28 @@ function Profile() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        {/* Account header */}
+      {/* Account header */}
+      <section className="py-14 sm:py-16" style={{ background: "linear-gradient(135deg,#4A136C 0%, #381055 100%)" }}>
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="mb-10 flex items-center gap-4"
+          className="mx-auto flex max-w-5xl items-center gap-4 px-6"
         >
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--primary)]/10">
-            <User size={28} className="text-[var(--primary)]" />
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15">
+            <User size={28} className="text-white" />
           </div>
           <div>
-            <Heading level="h2">{user?.name || "Your Account"}</Heading>
-            <Text tone="muted" size="sm">{user?.email}</Text>
+            <Heading level="h2" className="!text-white">{user?.name || "Your Account"}</Heading>
+            <Text size="sm" className="text-white/70">{user?.email}</Text>
           </div>
           {user?.role === "admin" && (
-            <Badge variant="primary" className="ml-auto">Admin</Badge>
+            <Badge className="ml-auto bg-white/15 text-white">Admin</Badge>
           )}
         </motion.div>
+      </section>
 
+      <section className="mx-auto max-w-5xl px-6 py-16">
         {/* Stats */}
         <motion.div
           initial="hidden"
@@ -188,7 +190,7 @@ function Profile() {
                     className="flex items-center justify-between rounded-[var(--radius-md)] border border-[var(--border)] p-3 hover:bg-[var(--background)]"
                   >
                     <div>
-                      <p className="text-sm font-medium text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                      <p className="text-sm font-medium text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                         #{order.id.slice(0, 8)}
                       </p>
                       <p className="text-xs text-[var(--text-light)]">
@@ -262,7 +264,7 @@ function Profile() {
               {reviews.map((review) => (
                 <div key={review.id} className="border-t border-[var(--border)] pt-4 first:border-t-0 first:pt-0">
                   <div className="flex items-center justify-between">
-                    <Link to={`/product/${review.productSlug}`} className="text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    <Link to={`/product/${review.productSlug}`} className="text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                       {review.productName}
                     </Link>
                     <Text size="xs" tone="muted">

@@ -4,7 +4,8 @@ import { useAuth } from "../../context/AuthContext";
 import { getOrdersByUser } from "../../services/firebase/firestore";
 import { Loader, EmptyState } from "../../components/common";
 import Badge from "../../components/ui/Badge";
-import { Heading, Text } from "../../components/ui/Typography";
+import { Text } from "../../components/ui/Typography";
+import PageHeader from "../../components/layout/PageHeader";
 import { formatGBP } from "../../lib/currency";
 
 const STATUS_VARIANT = {
@@ -40,14 +41,9 @@ function Orders() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      <section className="mx-auto max-w-4xl px-6 py-16">
-        <Heading level="h1" className="mb-1">
-          Order History
-        </Heading>
-        <Text tone="muted" className="mb-10">
-          Track your past and current orders.
-        </Text>
+      <PageHeader title="Order History" subtitle="Track your past and current orders." />
 
+      <section className="mx-auto max-w-4xl px-6 py-16">
         {orders.length === 0 ? (
           <EmptyState
             title="No orders yet"
@@ -65,7 +61,7 @@ function Orders() {
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <p className="font-semibold text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    <p className="font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                       Order #{order.id.slice(0, 8)}
                     </p>
                     <p className="text-xs text-[var(--text-light)]">
@@ -80,7 +76,7 @@ function Orders() {
                     {STATUS_LABEL[order.status] || order.status}
                   </Badge>
                 </div>
-                <div className="mt-3 flex items-center justify-between text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                <div className="mt-3 flex items-center justify-between text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   <span className="text-[var(--text-light)]">
                     {order.items.length} item{order.items.length !== 1 && "s"}
                   </span>

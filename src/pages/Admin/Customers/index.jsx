@@ -61,7 +61,7 @@ function AdminCustomers() {
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="truncate font-semibold text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    <p className="truncate font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                       {u.name || "—"}
                     </p>
                     <p className="truncate text-xs text-[var(--text-light)]">{u.email}</p>
@@ -84,7 +84,7 @@ function AdminCustomers() {
 
           {/* Desktop: table */}
           <div className="hidden overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] md:block">
-            <table className="w-full text-left text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <table className="w-full text-left text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               <thead className="border-b border-[var(--border)] bg-[var(--background)] text-xs uppercase text-[var(--text-light)]">
                 <tr>
                   <th className="px-5 py-3">Name</th>

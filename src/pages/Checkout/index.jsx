@@ -14,6 +14,7 @@ import { SHIPPING_LOCATIONS, getCartShippingTotal } from "../../lib/productPrici
 import { formatGBP } from "../../lib/currency";
 import Input from "../../components/forms/Input";
 import Select from "../../components/forms/Select";
+import PageHeader from "../../components/layout/PageHeader";
 import Button from "../../components/ui/Button";
 import { Loader, EmptyState } from "../../components/common";
 import { Heading, Text } from "../../components/ui/Typography";
@@ -183,11 +184,9 @@ function Checkout() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <Heading level="h1" className="mb-10">
-          Checkout
-        </Heading>
+      <PageHeader title="Checkout" />
 
+      <section className="mx-auto max-w-5xl px-6 py-16">
         <form onSubmit={handleSubmit(onSubmit)} className="grid gap-10 lg:grid-cols-3">
           <div className="flex flex-col gap-6 lg:col-span-2">
             {/* Delivery address */}
@@ -246,7 +245,7 @@ function Checkout() {
                     />
                     <Icon size={20} className="text-[var(--primary)]" />
                     <div>
-                      <p className="text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                      <p className="text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                         {label}
                       </p>
                       <p className="text-xs text-[var(--text-light)]">{description}</p>
@@ -265,7 +264,7 @@ function Checkout() {
 
             <div className="flex flex-col gap-2">
               {items.map((item) => (
-                <div key={item.lineId} className="flex justify-between text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                <div key={item.lineId} className="flex justify-between text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   <span className="text-[var(--text-light)]">
                     {item.name} × {item.quantity}
                   </span>
@@ -274,7 +273,7 @@ function Checkout() {
               ))}
             </div>
 
-            <div className="mt-4 flex flex-col gap-2 border-t border-[var(--border)] pt-4 text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <div className="mt-4 flex flex-col gap-2 border-t border-[var(--border)] pt-4 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               <div className="flex justify-between">
                 <span className="text-[var(--text-light)]">Subtotal</span>
                 <span>{formatGBP(subtotal)}</span>

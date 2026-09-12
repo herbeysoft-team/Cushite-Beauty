@@ -137,7 +137,7 @@ function AdminOrderDetail() {
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                  <p className="truncate text-sm font-medium text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                     {item.name}
                   </p>
                   {item.options && Object.keys(item.options).length > 0 && (
@@ -154,7 +154,7 @@ function AdminOrderDetail() {
             ))}
           </div>
 
-          <div className="mt-4 flex flex-col gap-1.5 border-t border-[var(--border)] pt-4 text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
+          <div className="mt-4 flex flex-col gap-1.5 border-t border-[var(--border)] pt-4 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             <div className="flex justify-between">
               <span className="text-[var(--text-light)]">Subtotal</span>
               <span>{formatGBP(order.subtotal)}</span>
@@ -173,7 +173,7 @@ function AdminOrderDetail() {
         {/* Customer + address */}
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
           <Text className="mb-3 font-semibold">Delivery Details</Text>
-          <div className="grid gap-4 sm:grid-cols-2 text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
+          <div className="grid gap-4 sm:grid-cols-2 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             <div>
               <p className="text-[var(--text-light)]">Name</p>
               <p className="text-[var(--text)]">{address?.fullName}</p>

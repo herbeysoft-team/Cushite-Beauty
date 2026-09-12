@@ -23,7 +23,7 @@ export function Heading({ level = "h2", align, as, className, style, children, .
   return (
     <Tag
       className={cn(headingVariants({ level, align }), className)}
-      style={{ fontFamily: "Playfair Display", ...style }}
+      style={{ fontFamily: "'DM Sans', sans-serif", ...style }}
       {...props}
     >
       {children}
@@ -59,7 +59,7 @@ export function Text({ size, tone, align, as: Tag = "p", className, style, child
   return (
     <Tag
       className={cn(textVariants({ size, tone, align }), className)}
-      style={{ fontFamily: "'Poppins', sans-serif", ...style }}
+      style={{ fontFamily: "'DM Sans', sans-serif", ...style }}
       {...props}
     >
       {children}

@@ -5,7 +5,7 @@ function Badge({ variant, className, style, children, ...props }) {
   return (
     <span
       className={cn(badgeVariants({ variant }), className)}
-      style={{ fontFamily: "'Poppins', sans-serif", ...style }}
+      style={{ fontFamily: "'DM Sans', sans-serif", ...style }}
       {...props}
     >
       {children}

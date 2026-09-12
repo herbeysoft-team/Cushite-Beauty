@@ -13,7 +13,7 @@ const TextArea = forwardRef(function TextArea(
         <label
           htmlFor={areaId}
           className="text-sm font-medium text-[var(--text)]"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {label}
         </label>
@@ -28,7 +28,7 @@ const TextArea = forwardRef(function TextArea(
           error && "border-[var(--danger)] focus:border-[var(--danger)]",
           className
         )}
-        style={{ fontFamily: "'Poppins', sans-serif", ...style }}
+        style={{ fontFamily: "'DM Sans', sans-serif", ...style }}
         {...props}
       />
       {error && (

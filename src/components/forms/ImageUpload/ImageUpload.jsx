@@ -54,7 +54,7 @@ function ImageUpload({ value, onChange, pathPrefix, label = "Product Image" }) {
     <div className="flex flex-col gap-1.5">
       <span
         className="text-sm font-medium text-[var(--text)]"
-        style={{ fontFamily: "'Poppins', sans-serif" }}
+        style={{ fontFamily: "'DM Sans', sans-serif" }}
       >
         {label}
       </span>
@@ -84,7 +84,7 @@ function ImageUpload({ value, onChange, pathPrefix, label = "Product Image" }) {
             "flex h-40 w-40 flex-col items-center justify-center gap-2 rounded-[var(--radius-md)] border-2 border-dashed border-[var(--border)] text-[var(--text-light)] transition-colors",
             progress === null && "hover:border-[var(--primary)] hover:text-[var(--primary)]"
           )}
-          style={{ fontFamily: "'Poppins', sans-serif" }}
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {progress !== null ? (
             <>

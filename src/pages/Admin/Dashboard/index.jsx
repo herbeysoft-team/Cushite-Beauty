@@ -18,10 +18,10 @@ function StatCard({ icon: Icon, label, value, to }) {
       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--primary)]/10">
         <Icon size={18} className="text-[var(--primary)]" />
       </div>
-      <p className="text-2xl font-bold text-[var(--primary)]" style={{ fontFamily: "Playfair Display" }}>
+      <p className="text-2xl font-bold text-[var(--primary)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
         {value}
       </p>
-      <p className="text-sm text-[var(--text-light)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <p className="text-sm text-[var(--text-light)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
         {label}
       </p>
     </div>

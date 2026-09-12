@@ -5,6 +5,7 @@ import { QuantitySelector } from "../../components/product";
 import { EmptyState, Loader } from "../../components/common";
 import Button from "../../components/ui/Button";
 import { Heading, Text } from "../../components/ui/Typography";
+import PageHeader from "../../components/layout/PageHeader";
 import { formatGBP } from "../../lib/currency";
 
 function Cart() {
@@ -33,11 +34,9 @@ function Cart() {
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <Heading level="h1" className="mb-10">
-          Your Cart
-        </Heading>
+      <PageHeader title="Your Cart" />
 
+      <section className="mx-auto max-w-5xl px-6 py-16">
         <div className="grid gap-10 lg:grid-cols-3">
           <div className="flex flex-col gap-4 lg:col-span-2">
             {items.map((item) => (
@@ -60,7 +59,7 @@ function Cart() {
                     <Link
                       to={`/product/${item.slug}`}
                       className="font-semibold text-[var(--text)]"
-                      style={{ fontFamily: "'Poppins', sans-serif" }}
+                      style={{ fontFamily: "'DM Sans', sans-serif" }}
                     >
                       {item.name}
                     </Link>
@@ -99,7 +98,7 @@ function Cart() {
             <Heading level="h4" className="mb-4">
               Order Summary
             </Heading>
-            <div className="flex items-center justify-between text-sm text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <div className="flex items-center justify-between text-sm text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               <span>Subtotal</span>
               <span className="font-semibold">{formatGBP(subtotal)}</span>
             </div>

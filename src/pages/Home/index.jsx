@@ -40,7 +40,7 @@ function SectionHeading({ eyebrow, title, action }) {
         {eyebrow && (
           <p
             className="mb-1 text-xs font-semibold uppercase tracking-[0.25em]"
-            style={{ color: "#F59A23", fontFamily: "'Poppins', sans-serif" }}
+            style={{ color: "#F59A23" }}
           >
             {eyebrow}
           </p>
@@ -99,24 +99,21 @@ function Home() {
           >
             <p
               className="mb-4 text-lg font-medium uppercase tracking-[0.3em]"
-              style={{ color: "#F59A23", fontFamily: "'Poppins', sans-serif" }}
+              style={{ color: "#F59A23" }}
             >
               Luxury Cosmetics
             </p>
 
             <h1
               className="text-5xl font-bold leading-tight md:text-7xl"
-              style={{ fontFamily: "Playfair Display", color: "#4A136C" }}
+              style={{ color: "#4A136C" }}
             >
               Beauty That
               <br />
               Defines You.
             </h1>
 
-            <p
-              className="mt-6 text-lg leading-8 text-gray-600"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
+            <p className="mt-6 text-lg leading-8 text-gray-600">
               Discover premium skincare, makeup, fragrances, and beauty
               essentials carefully selected to enhance your confidence and
               elegance.
@@ -126,7 +123,7 @@ function Home() {
               <Link
                 to="/shop"
                 className="rounded-full px-8 py-4 text-white transition-all duration-300 hover:scale-105"
-                style={{ background: "#4A136C", fontFamily: "'Poppins', sans-serif" }}
+                style={{ background: "#4A136C" }}
               >
                 Shop Collection
               </Link>
@@ -134,7 +131,7 @@ function Home() {
               <Link
                 to="/shop"
                 className="rounded-full border-2 px-8 py-4 transition-all duration-300 hover:bg-[#4A136C] hover:text-white"
-                style={{ borderColor: "#4A136C", color: "#4A136C", fontFamily: "'Poppins', sans-serif" }}
+                style={{ borderColor: "#4A136C", color: "#4A136C" }}
               >
                 Explore Products
               </Link>
@@ -152,12 +149,8 @@ function Home() {
               style={{ background: "linear-gradient(135deg,#4A136C 0%, #7A2DAA 100%)" }}
             >
               <div className="text-center text-white">
-                <h2 className="text-3xl" style={{ fontFamily: "Playfair Display" }}>
-                  Cushite
-                </h2>
-                <p className="mt-3 text-lg" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                  Your Product Showcase
-                </p>
+                <h2 className="text-3xl">Cushite</h2>
+                <p className="mt-3 text-lg">Your Product Showcase</p>
               </div>
             </div>
           </motion.div>
@@ -178,9 +171,7 @@ function Home() {
             >
               <Icon size={22} className="text-[var(--primary)]" />
               <div>
-                <p className="text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                  {label}
-                </p>
+                <p className="text-sm font-semibold text-[var(--text)]">{label}</p>
                 <p className="text-xs text-[var(--text-light)]">{description}</p>
               </div>
             </motion.div>
@@ -233,14 +224,14 @@ function Home() {
                 >
                   <p
                     className="mb-1 text-xs font-semibold uppercase tracking-[0.25em]"
-                    style={{ color: "#F59A23", fontFamily: "'Poppins', sans-serif" }}
+                    style={{ color: "#F59A23" }}
                   >
                     Signature Edit
                   </p>
-                  <h2 className="text-3xl font-bold text-white md:text-4xl" style={{ fontFamily: "Playfair Display" }}>
+                  <h2 className="text-3xl font-bold text-white md:text-4xl">
                     The Cushite Collection
                   </h2>
-                  <p className="mx-auto mt-3 max-w-xl text-white/70" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                  <p className="mx-auto mt-3 max-w-xl text-white/70">
                     Our most-loved pieces, chosen by customers across Edinburgh, the UK and Africa.
                   </p>
                 </motion.div>
@@ -285,10 +276,7 @@ function Home() {
                       >
                         {category.name?.[0]}
                       </span>
-                      <span
-                        className="text-sm font-semibold text-[var(--text)] group-hover:text-[var(--primary)]"
-                        style={{ fontFamily: "'Poppins', sans-serif" }}
-                      >
+                      <span className="text-sm font-semibold text-[var(--text)] group-hover:text-[var(--primary)]">
                         {category.name}
                       </span>
                     </Link>

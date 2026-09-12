@@ -12,7 +12,7 @@ const Checkbox = forwardRef(function Checkbox(
     <label
       htmlFor={boxId}
       className="flex cursor-pointer items-center gap-2.5 text-sm text-[var(--text)]"
-      style={{ fontFamily: "'Poppins', sans-serif" }}
+      style={{ fontFamily: "'DM Sans', sans-serif" }}
     >
       <span className="relative flex h-5 w-5 items-center justify-center">
         <input

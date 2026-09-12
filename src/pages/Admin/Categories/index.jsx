@@ -108,7 +108,7 @@ function AdminCategories() {
               className="flex items-center justify-between rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] p-4"
             >
               <div>
-                <p className="font-medium text-[var(--text)]" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                <p className="font-medium text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   {category.name}
                 </p>
                 <p className="text-xs text-[var(--text-light)]">/{category.slug}</p>
