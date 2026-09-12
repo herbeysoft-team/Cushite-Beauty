@@ -44,7 +44,7 @@ function AdminCustomers() {
       <Heading level="h2" className="mb-1">
         Customers
       </Heading>
-      <Text tone="muted" className="mb-8">
+      <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted" className="mb-8">
         {users.length} registered user{users.length !== 1 && "s"}
       </Text>
 
@@ -61,10 +61,10 @@ function AdminCustomers() {
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="truncate font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <p className="truncate font-semibold text-[var(--text)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
                       {u.name || "—"}
                     </p>
-                    <p className="truncate text-xs text-[var(--text-light)]">{u.email}</p>
+                    <p style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="truncate text-xs text-[var(--text-light)]">{u.email}</p>
                   </div>
                   <Badge variant={u.role === "admin" ? "primary" : "neutral"}>{u.role}</Badge>
                 </div>
@@ -84,20 +84,24 @@ function AdminCustomers() {
 
           {/* Desktop: table */}
           <div className="hidden overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] md:block">
-            <table className="w-full text-left text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            <table className="w-full text-left text-sm" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
               <thead className="border-b border-[var(--border)] bg-[var(--background)] text-xs uppercase text-[var(--text-light)]">
                 <tr>
-                  <th className="px-5 py-3">Name</th>
-                  <th className="px-5 py-3">Email</th>
-                  <th className="px-5 py-3">Role</th>
-                  <th className="px-5 py-3 text-right">Actions</th>
+                  <th style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="px-5 py-3">Name</th>
+                  <th style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="px-5 py-3">Email</th>
+                  <th style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="px-5 py-3">Role</th>
+                  <th style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="px-5 py-3 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {users.map((u) => (
                   <tr key={u.id} className="border-b border-[var(--border)] last:border-0">
-                    <td className="px-5 py-3 font-medium text-[var(--text)]">{u.name || "—"}</td>
-                    <td className="px-5 py-3 text-[var(--text-light)]">{u.email}</td>
+                    <td className="px-5 py-3 font-medium text-[var(--text)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
+                      {u.name || "—"}
+                    </td>
+                    <td className="px-5 py-3 text-[var(--text-light)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
+                      {u.email}
+                    </td>
                     <td className="px-5 py-3">
                       <Badge variant={u.role === "admin" ? "primary" : "neutral"}>{u.role}</Badge>
                     </td>

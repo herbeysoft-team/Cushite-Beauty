@@ -23,7 +23,7 @@ function QuantitySelector({ value = 1, onChange, min = 1, max = 99, className })
       </button>
       <span
         className="w-8 text-center text-sm font-medium text-[var(--text)]"
-        style={{ fontFamily: "'DM Sans', sans-serif" }}
+        style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
       >
         {value}
       </span>

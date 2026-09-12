@@ -18,7 +18,7 @@ function ProductRating({ rating = 0, reviewCount, size = 14, className }) {
       {typeof reviewCount === "number" && (
         <span
           className="ml-1 text-xs text-[var(--text-light)]"
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
+          style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
         >
           ({reviewCount})
         </span>

@@ -99,21 +99,23 @@ function Home() {
           >
             <p
               className="mb-4 text-lg font-medium uppercase tracking-[0.3em]"
-              style={{ color: "#F59A23" }}
+              style={{ color: "#F59A23" , fontFamily: "`Bricolage Grotesque`, sans-serif" }}
             >
               Luxury Cosmetics
             </p>
 
             <h1
-              className="text-5xl font-bold leading-tight md:text-7xl"
-              style={{ color: "#4A136C" }}
+              className="text-6xl font-bold leading-tight md:text-7xl"
+              style={{ color: "#4A136C", fontFamily: "`Bricolage Grotesque`, sans-serif" }}
             >
               Beauty That
               <br />
               Defines You.
             </h1>
 
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600"
+              style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
+            >
               Discover premium skincare, makeup, fragrances, and beauty
               essentials carefully selected to enhance your confidence and
               elegance.
@@ -123,7 +125,7 @@ function Home() {
               <Link
                 to="/shop"
                 className="rounded-full px-8 py-4 text-white transition-all duration-300 hover:scale-105"
-                style={{ background: "#4A136C" }}
+                style={{ background: "#4A136C", fontFamily: "`Bricolage Grotesque`, sans-serif", textAlign: "center" }}
               >
                 Shop Collection
               </Link>
@@ -131,7 +133,7 @@ function Home() {
               <Link
                 to="/shop"
                 className="rounded-full border-2 px-8 py-4 transition-all duration-300 hover:bg-[#4A136C] hover:text-white"
-                style={{ borderColor: "#4A136C", color: "#4A136C" }}
+                style={{ borderColor: "#4A136C", color: "#4A136C", fontFamily: "`Bricolage Grotesque`, sans-serif", textAlign: "center" }}
               >
                 Explore Products
               </Link>

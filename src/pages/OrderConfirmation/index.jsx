@@ -62,34 +62,46 @@ function OrderConfirmation() {
           <Heading level="h3" className="mb-2">
             {order.paymentMethod === "bank_transfer" ? "Order Placed — Awaiting Payment" : "Order Confirmed"}
           </Heading>
-          <Text tone="muted">
+          <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted">
             Order reference: <span className="font-semibold text-[var(--text)]">{order.id}</span>
           </Text>
 
           {order.paymentMethod === "cod" && (
-            <Text tone="muted" className="mt-3">
+            <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted" className="mt-3">
               Thank you! Your order will be delivered soon — pay {formatGBP(order.total)} in cash or by card on delivery.
             </Text>
           )}
 
           {order.paymentMethod === "bank_transfer" && (
             <div className="mt-6 rounded-[var(--radius-md)] bg-[var(--background)] p-5 text-left">
-              <Text className="mb-3 font-semibold">Transfer {formatGBP(order.total)} to:</Text>
-              <div className="flex flex-col gap-1 text-sm text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                <span><strong>Account Name:</strong> {BANK_DETAILS.accountName}</span>
-                <span><strong>Account Number:</strong> {BANK_DETAILS.accountNumber}</span>
-                <span><strong>Sort Code:</strong> {BANK_DETAILS.sortCode}</span>
-                <span><strong>Bank:</strong> {BANK_DETAILS.bankName}</span>
-                <span><strong>Reference:</strong> {order.id}</span>
+              <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="mb-3 font-semibold">
+                Transfer {formatGBP(order.total)} to:
+              </Text>
+              <div className="flex flex-col gap-1 text-sm text-[var(--text)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
+                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
+                  <strong>Account Name:</strong> {BANK_DETAILS.accountName}
+                </span>
+                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
+                  <strong>Account Number:</strong> {BANK_DETAILS.accountNumber}
+                </span>
+                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
+                  <strong>Sort Code:</strong> {BANK_DETAILS.sortCode}
+                </span>
+                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
+                  <strong>Bank:</strong> {BANK_DETAILS.bankName}
+                </span>
+                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
+                  <strong>Reference:</strong> {order.id}
+                </span>
               </div>
-              <Text tone="muted" size="sm" className="mt-3">
+              <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted" size="sm" className="mt-3">
                 Please use your order reference as the transfer reference so we can match your payment. Your order ships once payment is confirmed.
               </Text>
             </div>
           )}
 
           {order.paymentMethod === "card" && (
-            <Text tone="muted" className="mt-3">
+            <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted" className="mt-3">
               We're confirming your card payment — you'll receive an email shortly.
             </Text>
           )}

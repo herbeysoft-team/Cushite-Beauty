@@ -51,7 +51,9 @@ function AdminProducts() {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <Heading level="h2">Products</Heading>
-          <Text tone="muted">{products.length} product{products.length !== 1 && "s"}</Text>
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted">
+            {products.length} product{products.length !== 1 && "s"}
+          </Text>
         </div>
         <Link to={ROUTES.ADMIN.PRODUCT_NEW}>
           <Button variant="primary">
@@ -81,14 +83,14 @@ function AdminProducts() {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <p className="truncate font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                      <p className="truncate font-semibold text-[var(--text)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
                         {product.name}
                       </p>
-                      <p className="text-xs text-[var(--text-light)]">{product.category}</p>
+                      <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-xs text-[var(--text-light)]">{product.category}</p>
                     </div>
                     {!inStock && <Badge variant="danger">Out of stock</Badge>}
                   </div>
-                  <p className="mt-2 text-sm font-semibold text-[var(--primary)]">
+                  <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="mt-2 text-sm font-semibold text-[var(--primary)]">
                     {min === max ? formatGBP(min) : `${formatGBP(min)} – ${formatGBP(max)}`}
                   </p>
                   <div className="mt-3 flex gap-2">
@@ -109,13 +111,13 @@ function AdminProducts() {
           {/* Desktop: table */}
           <div className="hidden overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] md:block">
             <table className="w-full text-left text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              <thead className="border-b border-[var(--border)] bg-[var(--background)] text-xs uppercase text-[var(--text-light)]">
+              <thead style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="border-b border-[var(--border)] bg-[var(--background)] text-xs uppercase text-[var(--text-light)]">
                 <tr>
-                  <th className="px-5 py-3">Product</th>
-                  <th className="px-5 py-3">Category</th>
-                  <th className="px-5 py-3">Price</th>
-                  <th className="px-5 py-3">Status</th>
-                  <th className="px-5 py-3 text-right">Actions</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Product</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Category</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Price</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Status</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3 text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -123,20 +125,20 @@ function AdminProducts() {
                   const { min, max } = getPriceRange(product);
                   const inStock = isInStock(product);
                   return (
-                    <tr key={product.id} className="border-b border-[var(--border)] last:border-0">
-                      <td className="px-5 py-3 font-medium text-[var(--text)]">{product.name}</td>
-                      <td className="px-5 py-3 text-[var(--text-light)]">{product.category || "—"}</td>
-                      <td className="px-5 py-3 text-[var(--text)]">
+                    <tr style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} key={product.id} className="border-b border-[var(--border)] last:border-0">
+                      <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}className="px-5 py-3 font-medium text-[var(--text)]">{product.name}</td>
+                      <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3 text-[var(--text-light)]">{product.category || "—"}</td>
+                      <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3 text-[var(--text)]">
                         {min === max ? formatGBP(min) : `${formatGBP(min)} – ${formatGBP(max)}`}
                       </td>
-                      <td className="px-5 py-3">
+                      <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">
                         {inStock ? (
                           <Badge variant="success">In stock</Badge>
                         ) : (
                           <Badge variant="danger">Out of stock</Badge>
                         )}
                       </td>
-                      <td className="px-5 py-3">
+                      <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">
                         <div className="flex justify-end gap-2">
                           <Link to={`/admin/products/${product.slug}/edit`}>
                             <Button variant="ghost" size="sm">
@@ -162,7 +164,7 @@ function AdminProducts() {
         onClose={() => setPendingDelete(null)}
         title="Delete product?"
       >
-        <Text tone="muted">
+        <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted">
           This will permanently delete "{pendingDelete?.name}". This can't be undone.
         </Text>
         <div className="mt-6 flex justify-end gap-3">

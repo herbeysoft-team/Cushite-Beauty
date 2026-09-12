@@ -63,7 +63,7 @@ function ProductCard({ product, onAddToCart, className }) {
           {product.category && (
             <span
               className="mb-1 block text-xs uppercase tracking-wide text-[var(--text-light)]"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
+              style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
             >
               {product.category}
             </span>
@@ -73,7 +73,7 @@ function ProductCard({ product, onAddToCart, className }) {
           )}
           <h3
             className="truncate text-sm font-semibold text-[var(--text)]"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
+            style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
           >
             {name}
           </h3>
@@ -86,7 +86,7 @@ function ProductCard({ product, onAddToCart, className }) {
           <Link
             to={`/product/${slug}`}
             className="flex w-full items-center justify-center gap-2 rounded-[var(--radius-xl)] border-2 border-[var(--primary)] py-2.5 text-sm font-medium text-[var(--primary)] transition-colors hover:bg-[var(--primary)] hover:text-[var(--surface)]"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
+            style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
           >
             Select Options
           </Link>
@@ -102,7 +102,7 @@ function ProductCard({ product, onAddToCart, className }) {
                 ? "bg-[var(--primary)] text-[var(--surface)] hover:bg-[var(--primary-dark)]"
                 : "cursor-not-allowed bg-[var(--border)] text-[var(--text-light)]"
             )}
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
+            style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
           >
             <ShoppingBag size={15} />
             {inStock ? "Add to Cart" : "Unavailable"}

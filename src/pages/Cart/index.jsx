@@ -48,7 +48,7 @@ function Cart() {
                   {item.image ? (
                     <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] text-xs text-[var(--surface)]">
+                    <div  style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] text-xs text-[var(--surface)]">
                       {item.name}
                     </div>
                   )}
@@ -59,18 +59,18 @@ function Cart() {
                     <Link
                       to={`/product/${item.slug}`}
                       className="font-semibold text-[var(--text)]"
-                      style={{ fontFamily: "'DM Sans', sans-serif" }}
+                      style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
                     >
                       {item.name}
                     </Link>
                     {item.options && Object.keys(item.options).length > 0 && (
-                      <Text tone="muted" size="sm" className="mt-1">
+                      <Text tone="muted" size="sm" className="mt-1" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
                         {Object.entries(item.options)
                           .map(([k, v]) => `${k}: ${v}`)
                           .join(" · ")}
                       </Text>
                     )}
-                    <Text tone="muted" size="sm" className="mt-1">
+                    <Text tone="muted" size="sm" className="mt-1" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
                       {formatGBP(item.price)} each
                     </Text>
                   </div>
@@ -85,6 +85,7 @@ function Cart() {
                       onClick={() => removeItem(item.lineId)}
                       aria-label="Remove item"
                       className="text-[var(--text-light)] hover:text-[var(--danger)]"
+                      style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
                     >
                       <X size={18} />
                     </button>
@@ -98,15 +99,15 @@ function Cart() {
             <Heading level="h4" className="mb-4">
               Order Summary
             </Heading>
-            <div className="flex items-center justify-between text-sm text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              <span>Subtotal</span>
-              <span className="font-semibold">{formatGBP(subtotal)}</span>
+            <div className="flex items-center justify-between text-sm text-[var(--text)]" >
+              <span style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>Subtotal</span>
+              <span style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="font-semibold">{formatGBP(subtotal)}</span>
             </div>
-            <Text tone="muted" size="xs" className="mt-2">
+            <Text tone="muted" size="xs" className="mt-2" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
               Shipping is calculated at checkout.
             </Text>
             <Link to="/checkout">
-              <Button variant="primary" size="lg" className="mt-6 w-full">
+              <Button variant="primary" size="lg" className="mt-6 w-full" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
                 Proceed to Checkout
               </Button>
             </Link>

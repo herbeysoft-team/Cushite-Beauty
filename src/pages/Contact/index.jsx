@@ -71,8 +71,8 @@ function Contact() {
                   <Icon size={18} className="text-[var(--primary)]" />
                 </div>
                 <div>
-                  <Text size="sm" tone="muted">{label}</Text>
-                  <Text className="font-medium">{value}</Text>
+                  <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} size="sm" tone="muted">{label}</Text>
+                  <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="font-medium">{value}</Text>
                 </div>
               </div>
             ))}

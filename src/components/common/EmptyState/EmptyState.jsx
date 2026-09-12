@@ -14,14 +14,16 @@ function EmptyState({
       <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[var(--primary)]/10">
         <Icon size={32} className="text-[var(--primary)]" />
       </div>
-      <Heading level="h4">{title}</Heading>
+      <Heading level="h4" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
+        {title}
+      </Heading>
       {description && (
-        <Text tone="muted" className="max-w-sm">
+        <Text tone="muted" className="max-w-sm" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
           {description}
         </Text>
       )}
       {actionLabel && onAction && (
-        <Button variant="primary" size="md" onClick={onAction} className="mt-2">
+        <Button variant="primary" size="md" onClick={onAction} className="mt-2" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
           {actionLabel}
         </Button>
       )}

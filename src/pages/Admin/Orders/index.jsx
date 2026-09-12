@@ -58,7 +58,7 @@ function AdminOrders() {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <Heading level="h2">Orders</Heading>
-          <Text tone="muted">
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted">
             {orders.length} order{orders.length !== 1 && "s"}
           </Text>
         </div>
@@ -86,10 +86,10 @@ function AdminOrders() {
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="truncate font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="truncate font-semibold text-[var(--text)]" >
                       {order.address?.fullName || "—"}
                     </p>
-                    <p className="text-xs text-[var(--text-light)]">
+                    <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-xs text-[var(--text-light)]">
                       #{order.id.slice(0, 8)} · {new Date(order.createdAt).toLocaleDateString("en-GB")}
                     </p>
                   </div>
@@ -98,10 +98,10 @@ function AdminOrders() {
                   </Badge>
                 </div>
                 <div className="mt-2 flex items-center justify-between text-sm">
-                  <span className="text-[var(--text-light)]">
+                  <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text-light)]">
                     {PAYMENT_METHOD_LABEL[order.paymentMethod] || order.paymentMethod}
                   </span>
-                  <span className="font-semibold text-[var(--primary)]">{formatGBP(order.total)}</span>
+                  <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="font-semibold text-[var(--primary)]">{formatGBP(order.total)}</span>
                 </div>
               </Link>
             ))}
@@ -112,33 +112,33 @@ function AdminOrders() {
             <table className="w-full text-left text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               <thead className="border-b border-[var(--border)] bg-[var(--background)] text-xs uppercase text-[var(--text-light)]">
                 <tr>
-                  <th className="px-5 py-3">Order</th>
-                  <th className="px-5 py-3">Customer</th>
-                  <th className="px-5 py-3">Payment</th>
-                  <th className="px-5 py-3">Total</th>
-                  <th className="px-5 py-3">Status</th>
-                  <th className="px-5 py-3">Date</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Order</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Customer</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Payment</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Total</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Status</th>
+                  <th style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">Date</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredOrders.map((order) => (
                   <tr
                     key={order.id}
-                    className="cursor-pointer border-b border-[var(--border)] last:border-0 hover:bg-[var(--background)]"
+                    style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="cursor-pointer border-b border-[var(--border)] last:border-0 hover:bg-[var(--background)]"
                     onClick={() => (window.location.href = `/admin/orders/${order.id}`)}
                   >
-                    <td className="px-5 py-3 font-medium text-[var(--text)]">#{order.id.slice(0, 8)}</td>
-                    <td className="px-5 py-3 text-[var(--text)]">{order.address?.fullName || "—"}</td>
-                    <td className="px-5 py-3 text-[var(--text-light)]">
+                    <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3 font-medium text-[var(--text)]">#{order.id.slice(0, 8)}</td>
+                    <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3 text-[var(--text)]">{order.address?.fullName || "—"}</td>
+                    <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3 text-[var(--text-light)]">
                       {PAYMENT_METHOD_LABEL[order.paymentMethod] || order.paymentMethod}
                     </td>
-                    <td className="px-5 py-3 text-[var(--text)]">{formatGBP(order.total)}</td>
-                    <td className="px-5 py-3">
+                    <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3 text-[var(--text)]">{formatGBP(order.total)}</td>
+                    <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3">
                       <Badge variant={STATUS_VARIANT[order.status] || "neutral"}>
                         {STATUS_LABEL[order.status] || order.status}
                       </Badge>
                     </td>
-                    <td className="px-5 py-3 text-[var(--text-light)]">
+                    <td style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="px-5 py-3 text-[var(--text-light)]">
                       {new Date(order.createdAt).toLocaleDateString("en-GB")}
                     </td>
                   </tr>

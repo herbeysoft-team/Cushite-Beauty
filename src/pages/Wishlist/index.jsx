@@ -84,11 +84,11 @@ function Wishlist() {
                     )}
                   </div>
                   <div className="p-4">
-                    <p className="truncate text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <p className="truncate text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
                       {item.name}
                     </p>
                     {item.price != null && (
-                      <p className="mt-1 text-sm font-bold text-[var(--primary)]">{formatGBP(item.price)}</p>
+                      <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="mt-1 text-sm font-bold text-[var(--primary)]">{formatGBP(item.price)}</p>
                     )}
                   </div>
                 </Link>

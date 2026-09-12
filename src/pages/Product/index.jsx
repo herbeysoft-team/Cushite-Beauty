@@ -128,7 +128,7 @@ function Product() {
               {activeImage ? (
                 <img src={activeImage} alt={product.name} className="h-full w-full object-cover" />
               ) : (
-                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] text-2xl text-[var(--surface)]">
+                <div style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] text-2xl text-[var(--surface)]">
                   {product.name}
                 </div>
               )}
@@ -198,6 +198,7 @@ function Product() {
                 disabled={!selectionComplete || !inStock}
                 onClick={handleAddToCart}
                 className="flex-1"
+                style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
               >
                 {!selectionComplete ? "Select Options" : inStock ? "Add to Cart" : "Out of Stock"}
               </Button>

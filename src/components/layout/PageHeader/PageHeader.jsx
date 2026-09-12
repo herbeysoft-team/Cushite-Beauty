@@ -22,11 +22,11 @@ function PageHeader({ title, subtitle, align = "center", children }) {
           align === "center" ? "text-center" : "text-left"
         )}
       >
-        <Heading level="h1" align={align} className="!text-white">
+        <Heading level="h2" align={align} className="!text-white">
           {title}
         </Heading>
         {subtitle && (
-          <Text size="lg" className={cn("mt-3 text-white/70", align === "center" && "mx-auto max-w-xl")}>
+          <Text size="md" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif", textAlign: "center"}} className={cn("mt-3 text-white/70", align === "center" && "mx-auto max-w-xl")}>
             {subtitle}
           </Text>
         )}

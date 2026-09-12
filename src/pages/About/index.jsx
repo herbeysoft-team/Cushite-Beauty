@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Sparkles, Globe2, Heart, ShieldCheck } from "lucide-react";
+import { Sparkles, Globe2, Heart, ShieldCheck, TextAlignCenter } from "lucide-react";
 import { Heading, Text } from "../../components/ui/Typography";
 import Button from "../../components/ui/Button";
 
@@ -41,32 +41,34 @@ function About() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mx-auto max-w-3xl px-6 text-center"
+          className="mx-auto max-w-4xl px-4 text-center"
         >
-          <p className="mb-3 text-xs font-semibold font-heading uppercase tracking-[0.25em] text-[#F59A23]">
+          <p style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="mb-3 text-xs font-semibold font-heading uppercase tracking-[0.25em] text-[#F59A23]">
             Our Story
           </p>
-          <Heading level="h1" className="!text-white font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+          <Heading style={{ fontFamily: "`Bricolage Grotesque`, sans-serif", textAlign: "center" }} level="h2" className="!text-white font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
             Beauty That Defines You
           </Heading>
-          <Text className="mt-4 text-white/80" size="lg">
-            Cushite Beauty is a home for premium skincare, makeup and fragrances —
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif", textAlign: "center" }} className="mt-4 text-white/80" size="lg">
+            Cushite Beauty is a home for premium skincare, makeup and fragrances, 
             built to celebrate elegance in every form, wherever you are.
           </Text>
         </motion.div>
       </section>
 
       {/* Story */}
-      <section className="mx-auto max-w-3xl px-6 py-20">
+      <section className="mx-auto max-w-4xl px-6 py-20">
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-          <Heading level="h3" className="mb-4">Who We Are</Heading>
-          <Text tone="muted" size="lg" className="mb-4">
+          <Heading style={{ fontFamily: "`Bricolage Grotesque`, sans-serif"}} level="h3" className="mb-4">
+            Who We Are
+          </Heading>
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif"}} tone="muted" size="lg" className="mb-4">
             Cushite Beauty started with a simple idea: beauty essentials should feel
             personal, not mass-produced. We hand-pick every product in our
             catalogue — skincare that actually works, makeup that lasts, and
             fragrances worth remembering.
           </Text>
-          <Text tone="muted" size="lg">
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted" size="lg">
             From our base in Edinburgh, we ship across the UK and to customers
             throughout Africa, bringing the same care and attention to every
             order regardless of where it's headed.
@@ -84,7 +86,9 @@ function About() {
             viewport={{ once: true }}
             className="mb-12 text-center"
           >
-            <Heading level="h3">What We Stand For</Heading>
+            <Heading style={{ fontFamily: "`Bricolage Grotesque`, sans-serif"}} level="h3">
+              What We Stand For
+            </Heading>
           </motion.div>
 
           <motion.div
@@ -103,8 +107,10 @@ function About() {
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--primary)]/10">
                   <Icon size={22} className="text-[var(--primary)]" />
                 </div>
-                <Text className="mb-1 font-semibold">{title}</Text>
-                <Text tone="muted" size="sm">{description}</Text>
+                <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="mb-1 font-semibold">{title}</Text>
+                <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted" size="sm">
+                  {description}
+                </Text>
               </motion.div>
             ))}
           </motion.div>
@@ -113,7 +119,9 @@ function About() {
 
       {/* CTA */}
       <section className="py-20 text-center">
-        <Heading level="h3" className="mb-4">Ready to Explore?</Heading>
+        <Heading style={{ fontFamily: "`Bricolage Grotesque`, sans-serif", textAlign: "center" }} level="h3" className="mb-4">
+          Ready to Explore?
+        </Heading>
         <Link to="/shop">
           <Button variant="primary" size="lg">Shop the Collection</Button>
         </Link>

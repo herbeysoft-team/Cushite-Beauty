@@ -45,7 +45,7 @@ function Privacy() {
       />
 
       <section className="mx-auto max-w-3xl px-6 py-16">
-        <Text tone="muted" size="lg" className="mb-10">
+        <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted" size="lg" className="mb-10">
           Cushite Beauty ("we", "us", "our") respects your privacy. This policy
           explains what information we collect, how we use it, and the
           choices you have.
@@ -57,13 +57,13 @@ function Privacy() {
               <Heading level="h4" className="mb-2">
                 {title}
               </Heading>
-              <Text tone="muted">{body}</Text>
+              <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted">{body}</Text>
             </div>
           ))}
         </div>
 
         <div className="mt-10 border-t border-[var(--border)] pt-6">
-          <Text tone="muted" size="sm">
+          <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted" size="sm">
             Questions about this policy? <a href="/contact" className="font-medium text-[var(--primary)]">Get in touch</a>.
           </Text>
         </div>

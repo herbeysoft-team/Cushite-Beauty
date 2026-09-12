@@ -23,7 +23,7 @@ export function Heading({ level = "h2", align, as, className, style, children, .
   return (
     <Tag
       className={cn(headingVariants({ level, align }), className)}
-      style={{ fontFamily: "'DM Sans', sans-serif", ...style }}
+      style={{ fontFamily: "`Bricolage Grotesque`, sans-serif", ...style }}
       {...props}
     >
       {children}

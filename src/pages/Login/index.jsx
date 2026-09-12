@@ -50,7 +50,7 @@ function Login() {
           <Heading level="h3" align="center" className="!text-white">
             Welcome Back
           </Heading>
-          <Text align="center" className="mt-2 text-white/70">
+          <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} align="center" className="mt-2 text-white/70">
             Log in to your Cushite Beauty account.
           </Text>
         </div>
@@ -76,7 +76,7 @@ function Login() {
             </Button>
           </form>
 
-          <Text align="center" size="sm" tone="muted" className="mt-6">
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} align="center" size="sm" tone="muted" className="mt-6">
             Don't have an account?{" "}
             <Link to="/register" className="font-semibold text-[var(--primary)]">
               Create one

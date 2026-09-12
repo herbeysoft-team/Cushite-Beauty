@@ -61,10 +61,10 @@ function Orders() {
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <p className="font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <p style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="font-semibold text-[var(--text)]" >
                       Order #{order.id.slice(0, 8)}
                     </p>
-                    <p className="text-xs text-[var(--text-light)]">
+                    <p style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="text-xs text-[var(--text-light)]">
                       {new Date(order.createdAt).toLocaleDateString("en-GB", {
                         day: "numeric",
                         month: "short",
@@ -76,11 +76,11 @@ function Orders() {
                     {STATUS_LABEL[order.status] || order.status}
                   </Badge>
                 </div>
-                <div className="mt-3 flex items-center justify-between text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  <span className="text-[var(--text-light)]">
+                <div className="mt-3 flex items-center justify-between text-sm" style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>
+                  <span style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="text-[var(--text-light)]">
                     {order.items.length} item{order.items.length !== 1 && "s"}
                   </span>
-                  <span className="font-semibold text-[var(--primary)]">{formatGBP(order.total)}</span>
+                  <span style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="font-semibold text-[var(--primary)]">{formatGBP(order.total)}</span>
                 </div>
               </Link>
             ))}

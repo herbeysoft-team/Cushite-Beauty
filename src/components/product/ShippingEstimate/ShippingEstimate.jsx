@@ -15,7 +15,7 @@ function ShippingEstimate({ product }) {
     <div className="rounded-[var(--radius-md)] border border-[var(--border)] p-4">
       <div className="mb-3 flex items-center gap-2 text-sm font-medium text-[var(--text)]">
         <Truck size={16} />
-        <span style={{ fontFamily: "'DM Sans', sans-serif" }}>Shipping</span>
+        <span style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>Shipping</span>
       </div>
 
       <Select
@@ -26,7 +26,7 @@ function ShippingEstimate({ product }) {
 
       <p
         className="mt-3 text-sm text-[var(--text-light)]"
-        style={{ fontFamily: "'DM Sans', sans-serif" }}
+        style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
       >
         {cost != null
           ? `${formatGBP(cost)} to this location`

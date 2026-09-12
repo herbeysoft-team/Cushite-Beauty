@@ -37,10 +37,10 @@ function StatCard({ icon: Icon, label, value }) {
       <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--primary)]/10">
         <Icon size={18} className="text-[var(--primary)]" />
       </div>
-      <p className="text-2xl font-bold text-[var(--primary)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      <p className="text-2xl font-bold text-[var(--primary)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
         {value}
       </p>
-      <p className="text-sm text-[var(--text-light)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      <p className="text-sm text-[var(--text-light)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
         {label}
       </p>
     </motion.div>
@@ -148,7 +148,7 @@ function Profile() {
           </div>
           <div>
             <Heading level="h2" className="!text-white">{user?.name || "Your Account"}</Heading>
-            <Text size="sm" className="text-white/70">{user?.email}</Text>
+            <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} size="sm" className="text-white/70">{user?.email}</Text>
           </div>
           {user?.role === "admin" && (
             <Badge className="ml-auto bg-white/15 text-white">Admin</Badge>
@@ -173,14 +173,18 @@ function Profile() {
           {/* Recent orders */}
           <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
             <div className="mb-4 flex items-center justify-between">
-              <Text className="font-semibold">Recent Orders</Text>
+              <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="font-semibold">
+                Recent Orders
+              </Text>
               <Link to="/orders" className="text-xs font-medium text-[var(--primary)]">
                 View all
               </Link>
             </div>
 
             {orders.length === 0 ? (
-              <Text tone="muted" size="sm">No orders yet.</Text>
+              <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted" size="sm">
+                No orders yet.
+              </Text>
             ) : (
               <div className="flex flex-col gap-3">
                 {orders.slice(0, 4).map((order) => (
@@ -190,7 +194,7 @@ function Profile() {
                     className="flex items-center justify-between rounded-[var(--radius-md)] border border-[var(--border)] p-3 hover:bg-[var(--background)]"
                   >
                     <div>
-                      <p className="text-sm font-medium text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                      <p className="text-sm font-medium text-[var(--text)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
                         #{order.id.slice(0, 8)}
                       </p>
                       <p className="text-xs text-[var(--text-light)]">
@@ -198,8 +202,12 @@ function Profile() {
                       </p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Text size="sm" className="font-semibold">{formatGBP(order.total)}</Text>
-                      <Badge variant={STATUS_VARIANT[order.status] || "neutral"}>{order.status}</Badge>
+                      <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} size="sm" className="font-semibold">
+                        {formatGBP(order.total)}
+                      </Text>
+                      <Badge variant={STATUS_VARIANT[order.status] || "neutral"}>
+                        {order.status}
+                      </Badge>
                     </div>
                   </Link>
                 ))}
@@ -210,14 +218,18 @@ function Profile() {
           {/* Wishlist preview */}
           <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
             <div className="mb-4 flex items-center justify-between">
-              <Text className="font-semibold">Wishlist</Text>
+              <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="font-semibold">
+                Wishlist
+              </Text>
               <Link to="/wishlist" className="text-xs font-medium text-[var(--primary)]">
                 View all
               </Link>
             </div>
 
             {wishlistItems.length === 0 ? (
-              <Text tone="muted" size="sm">Nothing saved yet.</Text>
+              <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted" size="sm">
+                Nothing saved yet.
+              </Text>
             ) : (
               <div className="grid grid-cols-3 gap-3">
                 {wishlistItems.slice(0, 6).map((item) => (
@@ -238,11 +250,11 @@ function Profile() {
 
         {/* Reviews */}
         <section className="mt-8 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-          <Text className="mb-4 font-semibold">Ratings &amp; Reviews</Text>
+          <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="mb-4 font-semibold">Ratings &amp; Reviews</Text>
 
           {reviewableProducts.length > 0 && (
             <form onSubmit={handleSubmitReview} className="mb-6 flex flex-col gap-4 rounded-[var(--radius-md)] border border-[var(--border)] p-4">
-              <Text size="sm" tone="muted">Write a review for something you've bought:</Text>
+              <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} size="sm" tone="muted">Write a review for something you've bought:</Text>
               <Select
                 placeholder="Choose a product"
                 options={reviewableProducts.map((p) => ({ value: p.productId, label: p.name }))}
@@ -258,22 +270,22 @@ function Profile() {
           )}
 
           {reviews.length === 0 ? (
-            <Text tone="muted" size="sm">You haven't written any reviews yet.</Text>
+            <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted" size="sm">You haven't written any reviews yet.</Text>
           ) : (
             <div className="flex flex-col gap-4">
               {reviews.map((review) => (
                 <div key={review.id} className="border-t border-[var(--border)] pt-4 first:border-t-0 first:pt-0">
                   <div className="flex items-center justify-between">
-                    <Link to={`/product/${review.productSlug}`} className="text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <Link to={`/product/${review.productSlug}`} className="text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
                       {review.productName}
                     </Link>
-                    <Text size="xs" tone="muted">
+                    <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} size="xs" tone="muted">
                       {new Date(review.createdAt).toLocaleDateString("en-GB")}
                     </Text>
                   </div>
                   <ProductRating rating={review.rating} className="mt-1" />
                   {review.comment && (
-                    <Text size="sm" tone="muted" className="mt-1">
+                    <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} size="sm" tone="muted" className="mt-1">
                       {review.comment}
                     </Text>
                   )}

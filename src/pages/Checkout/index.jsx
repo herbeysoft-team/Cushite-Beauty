@@ -191,13 +191,13 @@ function Checkout() {
           <div className="flex flex-col gap-6 lg:col-span-2">
             {/* Delivery address */}
             <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-              <Text className="mb-4 font-semibold">Delivery Address</Text>
+              <Text style={{fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="mb-4 font-semibold">Delivery Address</Text>
               <div className="grid gap-4 sm:grid-cols-2">
-                <Input label="Full Name" error={errors.fullName?.message} {...register("fullName")} />
-                <Input label="Email" type="email" error={errors.email?.message} {...register("email")} />
+                <Input  style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} label="Full Name" error={errors.fullName?.message} {...register("fullName")} />
+                <Input style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} label="Email" type="email" error={errors.email?.message} {...register("email")} />
               </div>
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <Input label="Phone" error={errors.phone?.message} {...register("phone")} />
+                <Input style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} label="Phone" error={errors.phone?.message} {...register("phone")} />
                 <Select
                   label="Shipping Region"
                   placeholder="Select a region"
@@ -207,20 +207,22 @@ function Checkout() {
                 />
               </div>
               <div className="mt-4">
-                <Input label="Address Line 1" error={errors.addressLine1?.message} {...register("addressLine1")} />
+                <Input style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} label="Address Line 1" error={errors.addressLine1?.message} {...register("addressLine1")} />
               </div>
               <div className="mt-4">
-                <Input label="Address Line 2 (optional)" {...register("addressLine2")} />
+                <Input style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} label="Address Line 2 (optional)" {...register("addressLine2")} />
               </div>
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <Input label="City" error={errors.city?.message} {...register("city")} />
-                <Input label="Postcode" error={errors.postcode?.message} {...register("postcode")} />
+                <Input style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} label="City" error={errors.city?.message} {...register("city")} />
+                <Input style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} label="Postcode" error={errors.postcode?.message} {...register("postcode")} />
               </div>
             </section>
 
             {/* Payment method */}
             <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-              <Text className="mb-4 font-semibold">Payment Method</Text>
+              <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="mb-4 font-semibold">
+                Payment Method
+              </Text>
               {errors.paymentMethod && (
                 <Text size="sm" className="mb-2 text-[var(--danger)]">
                   {errors.paymentMethod.message}
@@ -245,7 +247,7 @@ function Checkout() {
                     />
                     <Icon size={20} className="text-[var(--primary)]" />
                     <div>
-                      <p className="text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                      <p className="text-sm font-semibold text-[var(--text)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
                         {label}
                       </p>
                       <p className="text-xs text-[var(--text-light)]">{description}</p>
@@ -264,7 +266,7 @@ function Checkout() {
 
             <div className="flex flex-col gap-2">
               {items.map((item) => (
-                <div key={item.lineId} className="flex justify-between text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <div key={item.lineId} className="flex justify-between text-sm" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
                   <span className="text-[var(--text-light)]">
                     {item.name} × {item.quantity}
                   </span>
@@ -273,17 +275,17 @@ function Checkout() {
               ))}
             </div>
 
-            <div className="mt-4 flex flex-col gap-2 border-t border-[var(--border)] pt-4 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            <div className="mt-4 flex flex-col gap-2 border-t border-[var(--border)] pt-4 text-sm" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
               <div className="flex justify-between">
-                <span className="text-[var(--text-light)]">Subtotal</span>
+                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text-light)]">Subtotal</span>
                 <span>{formatGBP(subtotal)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[var(--text-light)]">Shipping</span>
-                <span>{region ? formatGBP(shippingCost) : "Select a region"}</span>
+                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text-light)]">Shipping</span>
+                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>{region ? formatGBP(shippingCost) : "Select a region"}</span>
               </div>
               <div className="flex justify-between border-t border-[var(--border)] pt-2 text-base font-semibold text-[var(--text)]">
-                <span>Total</span>
+                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>Total</span>
                 <span>{formatGBP(total)}</span>
               </div>
             </div>

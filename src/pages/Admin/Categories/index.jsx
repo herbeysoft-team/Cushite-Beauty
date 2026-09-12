@@ -76,7 +76,7 @@ function AdminCategories() {
       <Heading level="h2" className="mb-1">
         Categories
       </Heading>
-      <Text tone="muted" className="mb-8">
+      <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted" className="mb-8">
         Organize your products into categories.
       </Text>
 
@@ -86,6 +86,7 @@ function AdminCategories() {
       >
         <div className="flex-1">
           <Input
+          style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
             label="New category name"
             placeholder="Skincare"
             {...register("name", { required: true })}
@@ -108,10 +109,10 @@ function AdminCategories() {
               className="flex items-center justify-between rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] p-4"
             >
               <div>
-                <p className="font-medium text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <p className="font-medium text-[var(--text)]" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
                   {category.name}
                 </p>
-                <p className="text-xs text-[var(--text-light)]">/{category.slug}</p>
+                <p style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="text-xs text-[var(--text-light)]">/{category.slug}</p>
               </div>
               <button
                 onClick={() => setPendingDelete(category)}
@@ -130,7 +131,7 @@ function AdminCategories() {
         onClose={() => setPendingDelete(null)}
         title="Delete category?"
       >
-        <Text tone="muted">
+        <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted">
           Products already assigned to "{pendingDelete?.name}" will keep that category value, but
           it will disappear from the Shop filter.
         </Text>

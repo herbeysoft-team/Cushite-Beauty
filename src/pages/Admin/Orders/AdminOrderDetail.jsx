@@ -78,7 +78,7 @@ function AdminOrderDetail() {
       <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
         <div>
           <Heading level="h2">Order #{order.id.slice(0, 8)}</Heading>
-          <Text tone="muted">
+          <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} tone="muted">
             {new Date(order.createdAt).toLocaleString("en-GB")}
           </Text>
         </div>
@@ -90,7 +90,9 @@ function AdminOrderDetail() {
       <div className="flex flex-col gap-6">
         {/* Status actions */}
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-          <Text className="mb-3 font-semibold">Update Status</Text>
+          <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="mb-3 font-semibold">
+            Update Status
+          </Text>
           <div className="flex flex-wrap gap-2">
             {STATUS_FLOW.map((status) => (
               <Button
@@ -123,7 +125,9 @@ function AdminOrderDetail() {
 
         {/* Items */}
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-          <Text className="mb-4 font-semibold">Items</Text>
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="mb-4 font-semibold">
+            Items
+          </Text>
           <div className="flex flex-col gap-3">
             {order.items.map((item, i) => (
               <div key={i} className="flex items-center gap-3">
@@ -131,68 +135,70 @@ function AdminOrderDetail() {
                   {item.image ? (
                     <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] text-[8px] text-white">
+                    <div style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--primary-light)] text-[8px] text-white">
                       {item.name}
                     </div>
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-[var(--text)]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  <p style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="truncate text-sm font-medium text-[var(--text)]">
                     {item.name}
                   </p>
                   {item.options && Object.keys(item.options).length > 0 && (
-                    <p className="text-xs text-[var(--text-light)]">
+                    <p style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="text-xs text-[var(--text-light)]">
                       {Object.entries(item.options).map(([k, v]) => `${k}: ${v}`).join(" · ")}
                     </p>
                   )}
                 </div>
-                <Text size="sm" tone="muted">× {item.quantity}</Text>
-                <Text size="sm" className="w-20 text-right font-semibold">
+                <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} size="sm" tone="muted">× {item.quantity}</Text>
+                <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} size="sm" className="w-20 text-right font-semibold">
                   {formatGBP(item.price * item.quantity)}
                 </Text>
               </div>
             ))}
           </div>
 
-          <div className="mt-4 flex flex-col gap-1.5 border-t border-[var(--border)] pt-4 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <div className="mt-4 flex flex-col gap-1.5 border-t border-[var(--border)] pt-4 text-sm" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
             <div className="flex justify-between">
-              <span className="text-[var(--text-light)]">Subtotal</span>
-              <span>{formatGBP(order.subtotal)}</span>
+              <span style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="text-[var(--text-light)]">Subtotal</span>
+              <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>{formatGBP(order.subtotal)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-[var(--text-light)]">Shipping ({order.region})</span>
-              <span>{formatGBP(order.shippingCost)}</span>
+              <span style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }} className="text-[var(--text-light)]">Shipping ({order.region})</span>
+              <span style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}>{formatGBP(order.shippingCost)}</span>
             </div>
             <div className="flex justify-between border-t border-[var(--border)] pt-1.5 text-base font-semibold">
-              <span>Total</span>
-              <span>{formatGBP(order.total)}</span>
+              <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>Total</span>
+              <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>{formatGBP(order.total)}</span>
             </div>
           </div>
         </section>
 
         {/* Customer + address */}
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-          <Text className="mb-3 font-semibold">Delivery Details</Text>
-          <div className="grid gap-4 sm:grid-cols-2 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="mb-3 font-semibold">
+            Delivery Details
+          </Text>
+          <div className="grid gap-4 sm:grid-cols-2 text-sm" style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}>
             <div>
-              <p className="text-[var(--text-light)]">Name</p>
-              <p className="text-[var(--text)]">{address?.fullName}</p>
+              <p  style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text-light)]">Name</p>
+              <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text)]">{address?.fullName}</p>
             </div>
             <div>
-              <p className="text-[var(--text-light)]">Email</p>
-              <p className="text-[var(--text)]">{address?.email}</p>
+              <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text-light)]">Email</p>
+              <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text)]">{address?.email}</p>
             </div>
             <div>
-              <p className="text-[var(--text-light)]">Phone</p>
-              <p className="text-[var(--text)]">{address?.phone}</p>
+              <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text-light)]">Phone</p>
+              <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text)]">{address?.phone}</p>
             </div>
             <div>
-              <p className="text-[var(--text-light)]">Payment Method</p>
-              <p className="text-[var(--text)]">{PAYMENT_METHOD_LABEL[order.paymentMethod] || order.paymentMethod}</p>
+              <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text-light)]">Payment Method</p>
+              <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text)]">{PAYMENT_METHOD_LABEL[order.paymentMethod] || order.paymentMethod}</p>
             </div>
             <div className="sm:col-span-2">
-              <p className="text-[var(--text-light)]">Address</p>
-              <p className="text-[var(--text)]">
+              <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text-light)]">Address</p>
+              <p style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="text-[var(--text)]">
                 {address?.addressLine1}
                 {address?.addressLine2 && `, ${address.addressLine2}`}, {address?.city}, {address?.postcode}
               </p>

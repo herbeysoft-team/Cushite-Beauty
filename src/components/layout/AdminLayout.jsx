@@ -38,7 +38,7 @@ function SidebarContent({ onNavigate }) {
       <Link
         to="/"
         className="mb-8 block text-xl font-bold text-white"
-        style={{ fontFamily: "'DM Sans', sans-serif" }}
+        style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
       >
         Cushite Beauty
       </Link>
@@ -58,7 +58,7 @@ function SidebarContent({ onNavigate }) {
                   : "text-white/70 hover:bg-white/10 hover:text-white"
               )
             }
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
+            style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
           >
             <Icon size={18} />
             {label}
@@ -69,14 +69,14 @@ function SidebarContent({ onNavigate }) {
       <div className="border-t border-white/10 pt-4">
         <p
           className="mb-3 truncate text-xs text-white/60"
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
+          style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
         >
           {user?.name || user?.email}
         </p>
         <button
           onClick={handleLogout}
           className="flex w-full items-center gap-2 rounded-[var(--radius-md)] px-3 py-2 text-sm text-white/70 hover:bg-white/10 hover:text-white"
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
+          style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
         >
           <LogOut size={16} />
           Logout

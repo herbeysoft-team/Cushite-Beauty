@@ -242,7 +242,7 @@ function AdminProductForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8">
         {/* Basic info */}
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-          <Text className="mb-4 font-semibold">Basic Info</Text>
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="mb-4 font-semibold">Basic Info</Text>
           <div className="grid gap-4 sm:grid-cols-2">
             <Input
               label="Product Name"
@@ -269,7 +269,9 @@ function AdminProductForm() {
 
           <div className="mt-4">
             <TextArea
-              label="Full Description"
+
+style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} 
+label="Full Description"
               placeholder="Details, ingredients, how to use..."
               {...register("description")}
             />
@@ -301,8 +303,8 @@ function AdminProductForm() {
 
         {/* Default pricing */}
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-          <Text className="mb-1 font-semibold">Default Pricing</Text>
-          <Text tone="muted" size="sm" className="mb-4">
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="mb-1 font-semibold">Default Pricing</Text>
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted" size="sm" className="mb-4">
             Used automatically if this product has no variations below.
           </Text>
           <div className="grid gap-4 sm:grid-cols-3">
@@ -329,8 +331,8 @@ function AdminProductForm() {
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <Text className="font-semibold">Attributes</Text>
-              <Text tone="muted" size="sm">
+              <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="font-semibold">Attributes</Text>
+              <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} tone="muted" size="sm">
                 e.g. Color, Size — used to build variations.
               </Text>
             </div>
@@ -376,7 +378,7 @@ function AdminProductForm() {
         {/* Variants */}
         {variantArray.fields.length > 0 && (
           <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-            <Text className="mb-4 font-semibold">
+            <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="mb-4 font-semibold">
               Variations ({variantArray.fields.length})
             </Text>
 
@@ -453,11 +455,13 @@ function AdminProductForm() {
 
         {/* Shipping */}
         <section className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface)] p-5">
-          <Text className="mb-4 font-semibold">Shipping Cost by Location (£)</Text>
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} className="mb-4 font-semibold">
+            Shipping Cost by Location (£)
+          </Text>
           <div className="grid gap-4 sm:grid-cols-3">
-            <Input label="Edinburgh" type="number" step="0.01" placeholder="3.50" {...register("shippingEdinburgh")} />
-            <Input label="Rest of UK" type="number" step="0.01" placeholder="6.00" {...register("shippingUk")} />
-            <Input label="Africa" type="number" step="0.01" placeholder="15.00" {...register("shippingAfrica")} />
+            <Input style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}label="Edinburgh" type="number" step="0.01" placeholder="3.50" {...register("shippingEdinburgh")} />
+            <Input style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}label="Rest of UK" type="number" step="0.01" placeholder="6.00" {...register("shippingUk")} />
+            <Input style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}label="Africa" type="number" step="0.01" placeholder="15.00" {...register("shippingAfrica")} />
           </div>
         </section>
 

@@ -19,7 +19,7 @@ function ProductPrice({ price, compareAtPrice, min, max, className }) {
   return (
     <div
       className={cn("flex items-center gap-2", className)}
-      style={{ fontFamily: "'DM Sans', sans-serif" }}
+      style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
     >
       <span className="text-lg font-bold text-[var(--primary)]">
         {isRange && "From "}

@@ -64,7 +64,7 @@ function AttributeEditor({ control, register, watch, setValue, attrIndex, onRemo
                 {optIndex === 0 && (
                   <span
                     className="text-sm font-medium text-[var(--text)]"
-                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
                   >
                     Swatch
                   </span>

@@ -56,7 +56,7 @@ function Register() {
           <Heading level="h3" align="center" className="!text-white">
             Create an Account
           </Heading>
-          <Text align="center" className="mt-2 text-white/70">
+          <Text style={{ fontFamily: "`Bricolage Grotesque`, sans-serif", textAlign: "center" }} className="mt-2 text-white/70">
             Join Cushite Beauty for a personalized experience.
           </Text>
         </div>
@@ -90,7 +90,7 @@ function Register() {
             </Button>
           </form>
 
-          <Text align="center" size="sm" tone="muted" className="mt-6">
+          <Text style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }} align="center" size="sm" tone="muted" className="mt-6">
             Already have an account?{" "}
             <Link to="/login" className="font-semibold text-[var(--primary)]">
               Log in
