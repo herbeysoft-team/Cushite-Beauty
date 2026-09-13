@@ -15,10 +15,10 @@ const PAYMENT_METHOD_LABELS = {
 };
 
 const BANK_DETAILS = {
-  accountName: "Cushite Beauty Ltd",
-  accountNumber: "12345678",
-  sortCode: "12-34-56",
-  bankName: "Example Bank",
+  accountName: "Norine Super Beauty Heaven",
+  accountNumber: "040004",
+  sortCode: "98-44-94",
+  bankName: "Monzo",
 };
 
 function OrderConfirmation() {
