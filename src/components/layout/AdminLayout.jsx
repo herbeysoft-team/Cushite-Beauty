@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
 import { ROUTES } from "../../routes/routePaths";
 import { cn } from "../../lib/cn";
+import logo from "../../assets/logo-white.png";
 
 const NAV_ITEMS = [
   { to: ROUTES.ADMIN.DASHBOARD, label: "Dashboard", icon: LayoutDashboard, end: true },
@@ -35,13 +36,9 @@ function SidebarContent({ onNavigate }) {
 
   return (
     <div className="flex h-full flex-col">
-      <Link
-        to="/"
-        className="mb-8 block text-xl font-bold text-white"
-        style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
-      >
-        Cushite Beauty
-      </Link>
+     <Link to="/" className="mb-8 block">
+  <img src={logo} alt="Cushite Beauty" className="h-14 sm:h-16" />
+</Link>
 
       <nav className="flex flex-1 flex-col gap-1">
         {NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
@@ -98,13 +95,9 @@ function AdminLayout() {
 
       {/* Mobile top bar */}
       <div className="flex items-center justify-between bg-[var(--primary)] px-4 py-3 lg:hidden">
-        <Link
-          to="/"
-          className="text-lg font-bold text-white"
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
-        >
-          Cushite Beauty
-        </Link>
+        <Link to="/">
+  <img src={logo} alt="Cushite Beauty" className="h-12" />
+</Link>
         <button
           onClick={() => setMobileOpen(true)}
           aria-label="Open menu"

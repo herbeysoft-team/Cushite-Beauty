@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { AtSign, MessageCircle, Mail } from "lucide-react";
+import logo from "../../assets/logo-white.png";
 
 function Footer() {
   return (
     <footer className="mt-20" style={{ background: "linear-gradient(135deg,#4A136C 0%, #381055 100%)" }}>
       <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-12 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <p className="text-lg font-bold text-white">Cushite Beauty</p>
+            <img src={logo} alt="Cushite Beauty" className="h-14 sm:h-16" />
             <p className="mt-2 text-sm text-white/60">
               Premium skincare, makeup and fragrances — Edinburgh, the UK and Africa.
             </p>

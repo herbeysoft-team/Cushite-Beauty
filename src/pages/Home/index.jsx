@@ -10,6 +10,9 @@ import { ProductCard } from "../../components/product";
 import { Loader } from "../../components/common";
 import { Heading, Text } from "../../components/ui/Typography";
 
+const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1551184451-76b762941ad6?q=80&w=900&h=900&fit=crop&crop=faces&auto=format";
+
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
@@ -89,7 +92,10 @@ function Home() {
   return (
     <main className="bg-[#FAFAFA]">
       {/* Hero */}
-      <section className="flex min-h-screen items-center">
+      <section
+        className="flex min-h-screen items-center"
+        style={{ background: "linear-gradient(135deg,#4A136C 0%, #381055 100%)" }}
+      >
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-6 lg:flex-row lg:justify-between">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -99,23 +105,18 @@ function Home() {
           >
             <p
               className="mb-4 text-lg font-medium uppercase tracking-[0.3em]"
-              style={{ color: "#F59A23" , fontFamily: "`Bricolage Grotesque`, sans-serif" }}
+              style={{ color: "#F59A23" }}
             >
               Luxury Cosmetics
             </p>
 
-            <h1
-              className="text-6xl font-bold leading-tight md:text-7xl"
-              style={{ color: "#4A136C", fontFamily: "`Bricolage Grotesque`, sans-serif" }}
-            >
+            <h1 className="text-6xl font-bold leading-tight text-white md:text-7xl">
               Beauty That
               <br />
               Defines You.
             </h1>
 
-            <p className="mt-6 text-lg leading-8 text-gray-600"
-              style={{ fontFamily: "`Bricolage Grotesque`, sans-serif" }}
-            >
+            <p className="mt-6 text-lg leading-8 text-white/70">
               Discover premium skincare, makeup, fragrances, and beauty
               essentials carefully selected to enhance your confidence and
               elegance.
@@ -124,16 +125,14 @@ function Home() {
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
               <Link
                 to="/shop"
-                className="rounded-full px-8 py-4 text-white transition-all duration-300 hover:scale-105"
-                style={{ background: "#4A136C", fontFamily: "`Bricolage Grotesque`, sans-serif", textAlign: "center" }}
+                className="rounded-full bg-white px-8 py-4 text-center text-[#4A136C] transition-all duration-300 hover:scale-105"
               >
                 Shop Collection
               </Link>
 
               <Link
                 to="/shop"
-                className="rounded-full border-2 px-8 py-4 transition-all duration-300 hover:bg-[#4A136C] hover:text-white"
-                style={{ borderColor: "#4A136C", color: "#4A136C", fontFamily: "`Bricolage Grotesque`, sans-serif", textAlign: "center" }}
+                className="rounded-full border-2 border-white px-8 py-4 text-center text-white transition-all duration-300 hover:bg-white hover:text-[#4A136C]"
               >
                 Explore Products
               </Link>
@@ -144,17 +143,28 @@ function Home() {
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-            className="mt-20 flex justify-center lg:mt-0"
+            className="relative mt-20 flex justify-center lg:mt-0"
           >
-            <div
-              className="flex h-[450px] w-[450px] items-center justify-center rounded-full"
-              style={{ background: "linear-gradient(135deg,#4A136C 0%, #7A2DAA 100%)" }}
+            {/* Soft glowing ring behind the portrait, breathing slowly */}
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{ background: "radial-gradient(circle, rgba(245,154,35,0.35) 0%, transparent 70%)" }}
+              animate={{ scale: [1, 1.12, 1], opacity: [0.6, 0.9, 0.6] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Portrait, gently floating */}
+            <motion.div
+              animate={{ y: [0, -14, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="relative h-[440px] w-[440px] overflow-hidden rounded-full border-4 border-white/25 shadow-2xl sm:h-[420px] sm:w-[420px] lg:h-[450px] lg:w-[450px]"
             >
-              <div className="text-center text-white">
-                <h2 className="text-3xl">Cushite</h2>
-                <p className="mt-3 text-lg">Your Product Showcase</p>
-              </div>
-            </div>
+              <img
+                src={HERO_IMAGE}
+                alt="Cushite Beauty model"
+                className="h-full w-full object-cover"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </section>

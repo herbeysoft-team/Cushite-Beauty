@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import WhatsAppButton from "./../common/WhatsAppButton";
 
 function Layout() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function Layout() {
       </main>
 
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
